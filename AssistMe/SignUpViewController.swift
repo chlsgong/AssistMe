@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class ViewController: UIViewController {
+class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -18,11 +18,20 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
 //        ref = FIRDatabase.database().reference()
 //        let childRef = ref.child("child")
 //        childRef.setValue("CHILD 1")
+        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if user != nil {
+                print("user signed in")
+            } else {
+                print("no user signed in")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +53,5 @@ class ViewController: UIViewController {
             }
         }
     }
-
 }
 
