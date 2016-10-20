@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
+import Firebase
 
 class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -25,13 +24,15 @@ class SignUpViewController: UIViewController {
 //        let childRef = ref.child("child")
 //        childRef.setValue("CHILD 1")
         
-        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
-            if user != nil {
-                print("user signed in")
-            } else {
-                print("no user signed in")
-            }
-        }
+        // SIGN IN CODE
+//        FirebaseManager.manager.signIn(email: "gch_charles@yahoo.com", password: "charlesgong") { error in
+//            if error != nil {
+//                print(error!)
+//            }
+//            else {
+//                print(FirebaseManager.manager.currentUser?.uid)
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,5 +54,5 @@ class SignUpViewController: UIViewController {
             }
         }
     }
+    
 }
-
