@@ -124,7 +124,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="d8u-Yh-etH" kind="show" id="tjk-Rj-XP5"/>
+                                    <segue destination="d8u-Yh-etH" kind="show" identifier="ShowChat" id="tjk-Rj-XP5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

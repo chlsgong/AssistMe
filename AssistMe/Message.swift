@@ -9,11 +9,11 @@
 import Foundation
 
 class Message {
-    let sender: String
+    let sender: Sender
     let date: String
     
-    init(sender: String, date: String) {
-        self.sender = sender
+    init(uid: String, displayName: String, date: String) {
+        self.sender = Sender(uid: uid, displayName: displayName)
         self.date = date
     }
 }

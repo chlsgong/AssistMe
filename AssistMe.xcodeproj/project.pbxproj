@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D119F6811DB9BC5E0007600F /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119F6801DB9BC5E0007600F /* Sender.swift */; };
 		D13EF9B91DB5CA52009868C8 /* Communication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D13EF9B71DB5CA52009868C8 /* Communication.storyboard */; };
 		D151D4DC1DB863970004B1F8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D4DB1DB863970004B1F8 /* Message.swift */; };
 		D1A8A8B11DB6925E001CF70D /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A8A8B01DB6925E001CF70D /* FirebaseManager.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		7C3EA22F1E4DEF67B5A71080 /* Pods-AssistMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssistMe/Pods-AssistMe.debug.xcconfig"; sourceTree = "<group>"; };
 		B56B5DECDBE22CD480D8DFF8 /* Pods_AssistMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssistMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D119F6801DB9BC5E0007600F /* Sender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		D13EF9B81DB5CA52009868C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Communication.storyboard; sourceTree = "<group>"; };
 		D151D4DB1DB863970004B1F8 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D1A8A8B01DB6925E001CF70D /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				D1C813EF1DACB18B00775451 /* AppDelegate.swift */,
 				D1B3DBE21DB3293D00ECE0A2 /* Utility.swift */,
+				D119F6801DB9BC5E0007600F /* Sender.swift */,
 				D151D4DB1DB863970004B1F8 /* Message.swift */,
 				D1A8A8B01DB6925E001CF70D /* FirebaseManager.swift */,
 				D1C813F11DACB18B00775451 /* SignUpViewController.swift */,
@@ -252,6 +255,7 @@
 				D1C813F21DACB18B00775451 /* SignUpViewController.swift in Sources */,
 				D1ACD5AF1DB2E83E00D11E22 /* ChatViewController.swift in Sources */,
 				D151D4DC1DB863970004B1F8 /* Message.swift in Sources */,
+				D119F6811DB9BC5E0007600F /* Sender.swift in Sources */,
 				D1C813F01DACB18B00775451 /* AppDelegate.swift in Sources */,
 				D1A8A8B11DB6925E001CF70D /* FirebaseManager.swift in Sources */,
 				D1B3DBE11DB3034B00ECE0A2 /* MessageTableViewController.swift in Sources */,

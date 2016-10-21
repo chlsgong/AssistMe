@@ -25,6 +25,9 @@ struct Identifier {
     
     // TableView Cells
     static let messageCell = "MessageCell"
+    
+    // Segues
+    static let showChat = "ShowChat"
 }
 
 // MARK: - Extensions
@@ -41,5 +44,13 @@ extension UIView {
 extension UINavigationItem {
     func changeBackButtonTitle(title: String) {
         self.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
+    }
+}
+
+extension Date {
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        return dateFormatter.string(from: self)
     }
 }

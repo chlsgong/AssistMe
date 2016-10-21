@@ -60,16 +60,12 @@ class SegmentedViewController: UIViewController {
         notificationTableViewController.view.isHidden = (index == 0)
     }
     
-    func updateNavBarTitle(title: String) {
-        self.navigationItem.title = title
-    }
-    
     @IBAction func segmentedControlChanged(_ sender: AnyObject) {
         let segmentedControl = sender as! UISegmentedControl
         let selectedIndex = segmentedControl.selectedSegmentIndex
         
         updateView(index: selectedIndex)
-        updateNavBarTitle(title: segmentedControl.titleForSegment(at: selectedIndex)!)
+        self.navigationItem.title = segmentedControl.titleForSegment(at: selectedIndex)
     }
     
 }

@@ -24,16 +24,37 @@ class MessageTableViewController: UITableViewController {
 //        let text = ["text": "First message yay!"]
 //        senderRef.setValue(text)
         
-        retrieveMessages()
-        
         FirebaseManager.manager.addStateListener { _ in
             print("finished")
+            self.retrieveMessages()
         }
+        
+        // retrieveMessages()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func retrieveMessages() {
+        fbMgr.queryMessages { messages in
+            self.messages = messages
+            self.tableView.reloadData()
+        }
+    }
+    
+    // MARK: - UI functions
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Identifier.showChat {
+            let cell = sender as! UITableViewCell
+            let destination = segue.destination as! ChatViewController
+            let message = messages[self.tableView.indexPath(for: cell)!.row]
+            
+            destination.receiverId = message.sender.uid
+            destination.receiverDisplayName = message.sender.displayName
+        }
     }
 
     // MARK: - Table view data source
@@ -48,17 +69,12 @@ class MessageTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.messageCell, for: indexPath)
+        let message =  messages[indexPath.row]
         
-        cell.textLabel?.text = messages[indexPath.row].sender
-        cell.detailTextLabel?.text = messages[indexPath.row].date
+        cell.textLabel?.text = message.sender.displayName
+        cell.detailTextLabel?.text = message.date
 
         return cell
     }
-    
-    func retrieveMessages() {
-        fbMgr.queryMessages { sender, date in
-            self.messages.append(Message(sender: sender, date: date))
-            self.tableView.reloadData()
-        }
-    }
+
 }

@@ -14,23 +14,25 @@ class FirebaseManager {
     
     var currentUser: FIRUser?
     
-    // Reference paths
-    private let profile = "profile"
-    private let message = "profile/message"
-    private let username = "profile/username"
-    private let notification = "profile/notification"
-    
     // Database Keys
+    private let profile = "profile"
+    private let message = "message"
     private let lastTextDate = "lastTextDate"
+    private let displayName = "displayName"
+    private let received = "received"
+    private let sent = "sent"
+    private let text = "text"
+    private let date = "date"
+    private let notification = "notification"
     
-    private let rootRef = FIRDatabase.database().reference()
+    private let rootNodeRef = FIRDatabase.database().reference()
     private let profileNodeRef: FIRDatabaseReference
-    private let messageNodeRef: FIRDatabaseReference
     
     private init() {
-        profileNodeRef = rootRef.child(profile)
-        messageNodeRef = rootRef.child(message)
+        profileNodeRef = rootNodeRef.child(profile)
     }
+    
+    // MARK: - Authentication functions
     
     func addStateListener(listenerBlock: @escaping (FIRUser?) -> Void) {
         FIRAuth.auth()?.addStateDidChangeListener { _, user in
@@ -52,14 +54,75 @@ class FirebaseManager {
         currentUser = nil
     }
     
-    func queryMessages(messageHandler: @escaping (String, String) -> Void) {
-        query(forNodeRef: messageNodeRef) { snapshot in
-            let sender = snapshot.key
-            let snapshotJSON = snapshot.value as! NSDictionary
-            let date = snapshotJSON[self.lastTextDate] as! String
+    // MARK: - Database functions
+    
+    func sendMessage(toUID uid: String, text: String, date: String) {
+        var keyNodeRef: FIRDatabaseReference
+        
+        let messageItem = [
+            self.text: text,
+            self.date: date
+        ]
+        
+        // Add to receiver's received node
+        let receivedNodeRef = messageNodeRef(uid: uid).child(receivedPath(uid: currentUser!.uid))
+        keyNodeRef = receivedNodeRef.childByAutoId()
+        keyNodeRef.setValue(messageItem)
+        
+        // Add to senders's sent node
+        let sentNodeRef = messageNodeRef(uid: currentUser!.uid).child(sentPath(uid: uid))
+        keyNodeRef = sentNodeRef.childByAutoId()
+        keyNodeRef.setValue(messageItem)
+    }
+    
+    func queryMessages(completion: @escaping ([Message]) -> Void) {
+        query(forNodeRef: uidNodeRef()) { snapshot in
+            var messages = [Message]()
             
-            messageHandler(sender, date)
+            for child in snapshot.children {
+                let childSnapshot = child as! FIRDataSnapshot
+                let properties = childSnapshot.value as! NSDictionary
+                let uid = childSnapshot.key
+                let displayName = properties[self.displayName] as! String
+                let date = properties[self.lastTextDate] as! String
+                let message = Message(uid: uid, displayName: displayName, date: date)
+                
+                messages.append(message)
+            }
+            
+            completion(messages)
         }
+    }
+    
+    // MARK: - Helper functions
+    
+    // uid/displayName
+    private func displayNamePath(uid: String) -> String {
+        return "\(uid)/\(displayName)"
+    }
+    
+    // uid/lastTextDate
+    private func lastTextDatePath(uid: String) -> String {
+        return "\(uid)/\(lastTextDate)"
+    }
+    
+    // uid/received
+    private func receivedPath(uid: String) -> String {
+        return "\(uid)/\(received)"
+    }
+    
+    // uid/sent
+    private func sentPath(uid: String) -> String {
+        return "\(uid)/\(sent)"
+    }
+    
+    private func uidNodeRef() -> FIRDatabaseReference {
+        return profileNodeRef.child(currentUser!.uid)
+    }
+    
+    private func messageNodeRef(uid: String) -> FIRDatabaseReference {
+        let messagePath = "\(uid)/\(message)"
+        return profileNodeRef.child(messagePath)
     }
     
     private func query(forNodeRef nodeRef: FIRDatabaseReference, snapshotHandler: @escaping (FIRDataSnapshot) -> Void) {
@@ -68,4 +131,5 @@ class FirebaseManager {
             snapshotHandler(snapshot)
         }
     }
+    
 }
