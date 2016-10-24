@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4C96FC31DBD71FE00574824 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C96FC21DBD71FE00574824 /* Profile.storyboard */; };
+		A4C96FC51DBD778F00574824 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C96FC41DBD778F00574824 /* ProfileViewController.swift */; };
+		A4C96FC71DBD7B4300574824 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C96FC61DBD7B4300574824 /* SettingsTableViewController.swift */; };
 		D119F6811DB9BC5E0007600F /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119F6801DB9BC5E0007600F /* Sender.swift */; };
 		D13EF9B91DB5CA52009868C8 /* Communication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D13EF9B71DB5CA52009868C8 /* Communication.storyboard */; };
 		D151D4DC1DB863970004B1F8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D4DB1DB863970004B1F8 /* Message.swift */; };
@@ -27,6 +30,9 @@
 
 /* Begin PBXFileReference section */
 		7C3EA22F1E4DEF67B5A71080 /* Pods-AssistMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssistMe/Pods-AssistMe.debug.xcconfig"; sourceTree = "<group>"; };
+		A4C96FC21DBD71FE00574824 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		A4C96FC41DBD778F00574824 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A4C96FC61DBD7B4300574824 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B56B5DECDBE22CD480D8DFF8 /* Pods_AssistMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssistMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D119F6801DB9BC5E0007600F /* Sender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		D13EF9B81DB5CA52009868C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Communication.storyboard; sourceTree = "<group>"; };
@@ -100,8 +106,11 @@
 				D1B3DBE01DB3034B00ECE0A2 /* MessageTableViewController.swift */,
 				D1B3DBDE1DB302AD00ECE0A2 /* NotificationTableViewController.swift */,
 				D1ACD5AE1DB2E83D00D11E22 /* ChatViewController.swift */,
+				A4C96FC41DBD778F00574824 /* ProfileViewController.swift */,
+				A4C96FC61DBD7B4300574824 /* SettingsTableViewController.swift */,
 				D1C813F31DACB18B00775451 /* Main.storyboard */,
 				D13EF9B71DB5CA52009868C8 /* Communication.storyboard */,
+				A4C96FC21DBD71FE00574824 /* Profile.storyboard */,
 				D1C813F61DACB18B00775451 /* Assets.xcassets */,
 				D1C813F81DACB18B00775451 /* LaunchScreen.storyboard */,
 				D1C813FB1DACB18B00775451 /* Info.plist */,
@@ -188,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4C96FC31DBD71FE00574824 /* Profile.storyboard in Resources */,
 				D1C813FA1DACB18B00775451 /* LaunchScreen.storyboard in Resources */,
 				D1C814061DACD08400775451 /* GoogleService-Info.plist in Resources */,
 				D1C813F71DACB18B00775451 /* Assets.xcassets in Resources */,
@@ -257,7 +267,9 @@
 				D151D4DC1DB863970004B1F8 /* Message.swift in Sources */,
 				D119F6811DB9BC5E0007600F /* Sender.swift in Sources */,
 				D1C813F01DACB18B00775451 /* AppDelegate.swift in Sources */,
+				A4C96FC51DBD778F00574824 /* ProfileViewController.swift in Sources */,
 				D1A8A8B11DB6925E001CF70D /* FirebaseManager.swift in Sources */,
+				A4C96FC71DBD7B4300574824 /* SettingsTableViewController.swift in Sources */,
 				D1B3DBE11DB3034B00ECE0A2 /* MessageTableViewController.swift in Sources */,
 				D1B3DBDD1DB3029400ECE0A2 /* SegmentedViewController.swift in Sources */,
 				D1B3DBE31DB3293D00ECE0A2 /* Utility.swift in Sources */,
