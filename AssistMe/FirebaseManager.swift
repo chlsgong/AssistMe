@@ -19,10 +19,10 @@ class FirebaseManager {
     private let message = "message"
     private let lastTextDate = "lastTextDate"
     private let displayName = "displayName"
-    private let received = "received"
-    private let sent = "sent"
+    private let messageItem = "messageItem"
     private let text = "text"
     private let date = "date"
+    private let sender = "sender"
     private let notification = "notification"
     
     private let rootNodeRef = FIRDatabase.database().reference()
@@ -56,27 +56,43 @@ class FirebaseManager {
     
     // MARK: - Database functions
     
-    func sendMessage(toUID uid: String, text: String, date: String) {
+    func sendMessage(toUID uid: String, displayName: String, text: String, date: String) {
         var keyNodeRef: FIRDatabaseReference
+        var displayNameNodeRef: FIRDatabaseReference
+        var lastTextDateNodeRef: FIRDatabaseReference
+        var messageItemNodeRef: FIRDatabaseReference
         
         let messageItem = [
             self.text: text,
-            self.date: date
+            self.date: date,
+            self.sender: currentUser!.uid
         ]
-        
+                
         // Add to receiver's received node
-        let receivedNodeRef = messageNodeRef(uid: uid).child(receivedPath(uid: currentUser!.uid))
-        keyNodeRef = receivedNodeRef.childByAutoId()
+        messageItemNodeRef = messageNodeRef(uid: uid).child(messageItemPath(uid: currentUser!.uid))
+        keyNodeRef = messageItemNodeRef.childByAutoId()
         keyNodeRef.setValue(messageItem)
+        // Update last text date for receiver
+        lastTextDateNodeRef = messageNodeRef(uid: uid).child(lastTextDatePath(uid: currentUser!.uid))
+        lastTextDateNodeRef.setValue(date)
+        // Update sender's display name for receiver
+        displayNameNodeRef = messageNodeRef(uid: uid).child(displayNamePath(uid: currentUser!.uid))
+        displayNameNodeRef.setValue(currentUser!.displayName)
         
         // Add to senders's sent node
-        let sentNodeRef = messageNodeRef(uid: currentUser!.uid).child(sentPath(uid: uid))
-        keyNodeRef = sentNodeRef.childByAutoId()
+        messageItemNodeRef = messageNodeRef(uid: currentUser!.uid).child(messageItemPath(uid: uid))
+        keyNodeRef = messageItemNodeRef.childByAutoId()
         keyNodeRef.setValue(messageItem)
+        // Update last text date for sender
+        lastTextDateNodeRef = messageNodeRef(uid: currentUser!.uid).child(lastTextDatePath(uid: uid))
+        lastTextDateNodeRef.setValue(date)
+        // Update receiver's display name for sender
+        displayNameNodeRef = messageNodeRef(uid: currentUser!.uid).child(displayNamePath(uid: uid))
+        displayNameNodeRef.setValue(displayName)
     }
     
     func queryMessages(completion: @escaping ([Message]) -> Void) {
-        query(forNodeRef: uidNodeRef()) { snapshot in
+        query(forNodeRef: uidNodeRef(uid: currentUser!.uid)) { snapshot in
             var messages = [Message]()
             
             for child in snapshot.children {
@@ -94,6 +110,21 @@ class FirebaseManager {
         }
     }
     
+    func queryMessageItems(forUID uid: String, messageItemHandler: @escaping (Message) -> Void) {
+        let messageItemNodeRef = messageNodeRef(uid: currentUser!.uid).child(messageItemPath(uid: uid))
+        
+        query(forNodeRef: messageItemNodeRef) { snapshot in
+            let properties = snapshot.value as! NSDictionary
+            let senderUID = properties[self.sender] as! String
+            let date = properties[self.date] as! String
+            let text = properties[self.text] as! String
+            
+            let messageItem = Message(uid: senderUID, date: date, text: text)
+            
+            messageItemHandler(messageItem)
+        }
+    }
+    
     // MARK: - Helper functions
     
     // uid/displayName
@@ -106,18 +137,13 @@ class FirebaseManager {
         return "\(uid)/\(lastTextDate)"
     }
     
-    // uid/received
-    private func receivedPath(uid: String) -> String {
-        return "\(uid)/\(received)"
+    // uid/messageItem
+    private func messageItemPath(uid: String) -> String {
+        return "\(uid)/\(messageItem)"
     }
     
-    // uid/sent
-    private func sentPath(uid: String) -> String {
-        return "\(uid)/\(sent)"
-    }
-    
-    private func uidNodeRef() -> FIRDatabaseReference {
-        return profileNodeRef.child(currentUser!.uid)
+    private func uidNodeRef(uid: String) -> FIRDatabaseReference {
+        return profileNodeRef.child(uid)
     }
     
     private func messageNodeRef(uid: String) -> FIRDatabaseReference {
@@ -127,9 +153,9 @@ class FirebaseManager {
     
     private func query(forNodeRef nodeRef: FIRDatabaseReference, snapshotHandler: @escaping (FIRDataSnapshot) -> Void) {
         let query = nodeRef.queryLimited(toLast: 25)
-        query.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
+        query.observe(.childAdded) { snapshot in
             snapshotHandler(snapshot)
-        }
+        }        
     }
     
 }

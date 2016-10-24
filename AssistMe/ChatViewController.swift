@@ -28,6 +28,12 @@ class ChatViewController: JSQMessagesViewController {
         
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        retrieveMessages()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -57,12 +63,25 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func sendMessage(text: String, date: Date) {
-        fbMgr.sendMessage(toUID: receiverId, text: text, date: date.toString())
-        addMessage(senderId: self.senderId, senderDisplayName: self.senderDisplayName, date: date, text: text)
+        fbMgr.sendMessage(toUID: receiverId, displayName: receiverDisplayName, text: text, date: date.toString())
+        // addMessage(senderId: self.senderId, senderDisplayName: self.senderDisplayName, date: date, text: text)
         
-        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        // JSQSystemSoundPlayer.jsq_playMessageSentSound()
         
-        finishSendingMessage()
+        finishSendingMessage(animated: true)
+    }
+    
+    func retrieveMessages() {
+        fbMgr.queryMessageItems(forUID: self.receiverId) { messageItem in
+            let senderUID = messageItem.sender.uid
+            let senderDisplayName = (senderUID == self.senderId ? self.senderDisplayName : self.receiverDisplayName)!
+            let date = messageItem.date.toDate()!
+            let text = messageItem.text
+            
+            self.addMessage(senderId: senderUID, senderDisplayName: senderDisplayName, date: date, text: text)
+            
+            self.finishReceivingMessage(animated: true)
+        }
     }
     
     // MARK: - JSQMessagesViewController and CollectionView delegate methods
@@ -103,10 +122,10 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        print(text)
-        print(senderId)
-        print(senderDisplayName)
-        print(date.toString())
+//        print(text)
+//        print(senderId)
+//        print(senderDisplayName)
+//        print(date.toString())
         
         sendMessage(text: text, date: date)
     }

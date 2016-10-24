@@ -11,9 +11,16 @@ import Foundation
 class Message {
     let sender: Sender
     let date: String
+    let text: String
     
-    init(uid: String, displayName: String, date: String) {
-        self.sender = Sender(uid: uid, displayName: displayName)
+    init(sender: Sender, date: String, text: String) {
+        self.sender = sender
         self.date = date
+        self.text = text
+    }
+    
+    convenience init(uid: String, displayName: String = "", date: String, text: String = "") {
+        let sender = Sender(uid: uid, displayName: displayName)
+        self.init(sender: sender, date: date, text: text)
     }
 }
