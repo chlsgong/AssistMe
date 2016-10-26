@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="7Wd-c5-hOe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nHr-EN-3le">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKd-Br-Igt">
@@ -28,6 +28,7 @@
                                             <segment title="Messages"/>
                                             <segment title="Notifications"/>
                                         </segments>
+                                        <color key="tintColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="segmentedControlChanged:" destination="IM2-vn-UKT" eventType="valueChanged" id="HGW-dB-zsA"/>
                                         </connections>
@@ -159,11 +160,16 @@
         <!--Navigation Controller-->
         <scene sceneID="nzu-Bf-sdK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zcC-0M-b1P" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CommunicationNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zcC-0M-b1P" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hJU-d8-XOW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="hJU-d8-XOW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.80392156859999997" green="0.96862745100000003" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

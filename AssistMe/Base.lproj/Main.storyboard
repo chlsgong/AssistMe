@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iNH-9U-hau">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -71,19 +71,46 @@
             </objects>
             <point key="canvasLocation" x="137" y="137"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="Unt-oW-Odr">
+        <!--Login View Controller-->
+        <scene sceneID="TFN-1c-Um9">
             <objects>
-                <tabBarController id="PF6-9b-iBb" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="DsP-5k-yBo">
+                <viewController id="ga5-11-hrG" customClass="LoginViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Uj-qI-rsu"/>
+                        <viewControllerLayoutGuide type="bottom" id="EZg-iU-F4h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j3C-II-Lgw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NW0-cc-AdO">
+                                <frame key="frameInset" minX="166" minY="277" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i8Q-7X-FJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="911" y="136"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="jei-8l-LMQ">
+            <objects>
+                <tabBarController id="iNH-9U-hau" customClass="MainTabBarController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Ngq-2S-xoB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bBC-iL-Its" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ozy-h2-BPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="138"/>
+            <point key="canvasLocation" x="1686" y="136"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="y50-qm-f6B">
@@ -97,33 +124,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgb-yF-Okc">
-                                <frame key="frameInset" minX="97" minY="598" width="180" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgb-yF-Okc">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" red="0.15686274509803921" green="0.29411764705882354" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asv-Nb-cpj">
-                                <frame key="frameInset" minX="97" minY="550" width="180" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asv-Nb-cpj">
                                 <color key="backgroundColor" red="0.15686274509803921" green="0.29411764705882354" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AssistMe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciK-0C-NGf">
-                                <frame key="frameInset" minX="107" minY="187" width="160" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AssistMe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciK-0C-NGf">
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
                                 <color key="textColor" red="0.15686274509803921" green="0.29411764705882354" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.80392156862745101" green="0.96862745098039216" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Mgb-yF-Okc" firstAttribute="leading" secondItem="qtN-gQ-7J3" secondAttribute="leadingMargin" constant="80" id="8n7-CD-inV"/>
+                            <constraint firstItem="Mgb-yF-Okc" firstAttribute="top" secondItem="asv-Nb-cpj" secondAttribute="bottom" constant="20" id="KU1-Ce-3Of"/>
+                            <constraint firstItem="ciK-0C-NGf" firstAttribute="top" secondItem="4hm-np-K2i" secondAttribute="bottom" constant="165" id="R3C-V2-KHy"/>
+                            <constraint firstItem="XcZ-4g-3Gz" firstAttribute="top" secondItem="Mgb-yF-Okc" secondAttribute="bottom" constant="40" id="SpG-uW-BE1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mgb-yF-Okc" secondAttribute="trailing" constant="80" id="cQL-hJ-eub"/>
+                            <constraint firstItem="asv-Nb-cpj" firstAttribute="leading" secondItem="qtN-gQ-7J3" secondAttribute="leadingMargin" constant="80" id="hnT-p0-fQy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="asv-Nb-cpj" secondAttribute="trailing" constant="80" id="ngC-8B-lbG"/>
+                            <constraint firstItem="ciK-0C-NGf" firstAttribute="centerX" secondItem="qtN-gQ-7J3" secondAttribute="centerX" id="rE4-pj-nNq"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCb-ks-yLO" userLabel="First Responder" sceneMemberID="firstResponder"/>

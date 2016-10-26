@@ -51,7 +51,7 @@ class ChatViewController: JSQMessagesViewController {
     
     func setupChatBubbles() {
         let factory = JSQMessagesBubbleImageFactory()!
-        outgoingBubbleImageView = factory.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        outgoingBubbleImageView = factory.outgoingMessagesBubbleImage(with: UIColor(colorLiteralRed: 40/255, green: 75/255, blue: 99/255, alpha: 1))
         incomingBubbleImageView = factory.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     
@@ -122,10 +122,9 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-//        print(text)
-//        print(senderId)
-//        print(senderDisplayName)
-//        print(date.toString())
+//        let formatter = JSQMessagesTimestampFormatter.shared()
+//        let stringDate = formatter?.timestamp(for: date)
+//        print(stringDate)
         
         sendMessage(text: text, date: date)
     }
