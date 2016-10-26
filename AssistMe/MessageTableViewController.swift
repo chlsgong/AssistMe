@@ -17,19 +17,12 @@ class MessageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // send messages
-//        let messageRef = FIRDatabase.database().reference().child("profile/message")
-//        let senderRef = messageRef.child("User1234/received")
-//        
-//        let text = ["text": "First message yay!"]
-//        senderRef.setValue(text)
+//        FirebaseManager.manager.addStateListener { _ in
+//            print("finished")
+//            self.retrieveMessages()
+//        }
         
-        FirebaseManager.manager.addStateListener { _ in
-            print("finished")
-            self.retrieveMessages()
-        }
-        
-        // retrieveMessages()
+        retrieveMessages()
     }
 
     override func didReceiveMemoryWarning() {

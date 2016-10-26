@@ -12,6 +12,7 @@ class SegmentedViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentedView: UIView!
     
+    let fbMgr = FirebaseManager.manager
     let communicationStoryboard = Utility.storyboard(forId: Identifier.communication)
     
     lazy var messageTableViewController: MessageTableViewController = {
@@ -66,6 +67,10 @@ class SegmentedViewController: UIViewController {
         
         updateView(index: selectedIndex)
         self.navigationItem.title = segmentedControl.titleForSegment(at: selectedIndex)
+    }
+    
+    @IBAction func logOutButtonTapped(_ sender: AnyObject) {
+        fbMgr.signOut()
     }
     
 }

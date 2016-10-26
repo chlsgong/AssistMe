@@ -41,6 +41,13 @@ class FirebaseManager {
         }
     }
     
+    func signUp(email: String, password: String, completion: @escaping (Error?) -> Void) {
+        FIRAuth.auth()?.createUser(withEmail: email, password: password) { user, error in
+            self.currentUser = user
+            completion(error)
+        }
+    }
+    
     func signIn(email: String, password: String, completion: @escaping (Error?) -> Void) {
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { user, error in
             self.currentUser = user

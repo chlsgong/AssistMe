@@ -27,10 +27,6 @@ class ChatViewController: JSQMessagesViewController {
         self.senderDisplayName = fbMgr.currentUser!.displayName ?? "Charles"
         
         setupUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         retrieveMessages()
     }
@@ -43,6 +39,8 @@ class ChatViewController: JSQMessagesViewController {
     func setupUI() {
         self.navigationItem.title = receiverDisplayName
         
+        self.edgesForExtendedLayout = []
+        
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
@@ -51,7 +49,7 @@ class ChatViewController: JSQMessagesViewController {
     
     func setupChatBubbles() {
         let factory = JSQMessagesBubbleImageFactory()!
-        outgoingBubbleImageView = factory.outgoingMessagesBubbleImage(with: UIColor(colorLiteralRed: 40/255, green: 75/255, blue: 99/255, alpha: 1))
+        outgoingBubbleImageView = factory.outgoingMessagesBubbleImage(with: UIColor.darkBlueColor())
         incomingBubbleImageView = factory.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     

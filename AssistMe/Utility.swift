@@ -12,6 +12,13 @@ class Utility {
     class func storyboard(forId id: String) -> UIStoryboard {
         return UIStoryboard(name: id, bundle: .main)
     }
+    
+    class func validEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
+        return emailTest.evaluate(with: email)
+    }
 }
 
 struct Identifier {
@@ -20,6 +27,9 @@ struct Identifier {
     static let communication = "Communication"
     
     // View Controllers
+    static let startUp = "StartUp"
+    static let mainTabs = "MainTabs"
+    static let commNav = "CommunicationNav"
     static let message = "Message"
     static let notification = "Notification"
     
@@ -27,7 +37,14 @@ struct Identifier {
     static let messageCell = "MessageCell"
     
     // Segues
+    static let signedUp = "SignedUp"
+    static let loggedIn = "LoggedIn"
     static let showChat = "ShowChat"
+}
+
+struct Asset {
+    static let messageIcon = "MessageIcon"
+    static let profileIcon = "ProfileIcon"
 }
 
 // MARK: - Extensions
@@ -60,5 +77,18 @@ extension String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
         return dateFormatter.date(from: self)
+    }
+}
+
+extension UIColor {
+    class func darkBlueColor() -> UIColor {
+        return UIColor(colorLiteralRed: 40/255, green: 75/255, blue: 99/255, alpha: 1)
+    }
+}
+
+extension UITabBarItem {
+    func setupTabBarItem(withImage image: String) {
+        self.image = UIImage(named: image)
+        self.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
     }
 }
