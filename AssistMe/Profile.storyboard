@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -76,6 +76,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="3eH-Y2-ah3" id="0eA-Yl-YPa"/>
+                        <outlet property="profileImage" destination="yb4-zP-MDh" id="4wo-Ub-k0k"/>
                         <outlet property="settingsButton" destination="2Jz-E9-FAl" id="KvL-nE-ePO"/>
                         <outlet property="usernameLabel" destination="jz0-bM-FWH" id="r8G-Bm-g9K"/>
                     </connections>
@@ -84,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="364" y="-36.431784107946029"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Settings Table View Controller-->
         <scene sceneID="tt7-2g-ceM">
             <objects>
-                <tableViewController id="l2J-Nf-6HR" sceneMemberID="viewController">
+                <tableViewController id="l2J-Nf-6HR" customClass="SettingsTableViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="26" sectionFooterHeight="28" id="ar6-CB-bB5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,6 +117,9 @@
                                                     <state key="normal" title="Change Username">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="changeUsernameButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="CcK-4B-aRl"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -125,8 +129,77 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="P64-Mt-0qc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ufr-UV-V1f">
                                         <rect key="frame" x="0.0" y="164" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ufr-UV-V1f" id="03k-yZ-TEF">
+                                            <frame key="frameInset" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjl-LB-dRK">
+                                                    <state key="normal" title="Edit Description">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="editDescriptionButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="LTd-TL-Hv9"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Tjl-LB-dRK" firstAttribute="centerY" secondItem="03k-yZ-TEF" secondAttribute="centerY" id="RE5-h7-QIV"/>
+                                                <constraint firstItem="Tjl-LB-dRK" firstAttribute="centerX" secondItem="03k-yZ-TEF" secondAttribute="centerX" id="crP-CG-krx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vf0-bN-xoA">
+                                        <rect key="frame" x="0.0" y="214" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vf0-bN-xoA" id="OOK-if-8Hn">
+                                            <frame key="frameInset" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3M-YL-b3W">
+                                                    <state key="normal" title="Edit Skills">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="editSkillsButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="UcO-IZ-sTU"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="b3M-YL-b3W" firstAttribute="centerY" secondItem="OOK-if-8Hn" secondAttribute="centerY" id="MfM-Ts-bOd"/>
+                                                <constraint firstItem="b3M-YL-b3W" firstAttribute="centerX" secondItem="OOK-if-8Hn" secondAttribute="centerX" id="lPH-Se-u4e"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6ge-r0-dmD">
+                                        <rect key="frame" x="0.0" y="264" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6ge-r0-dmD" id="oU9-nK-4Gs">
+                                            <frame key="frameInset" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6w-86-X6v">
+                                                    <state key="normal" title="Change Profile Picture">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="changeProfilePictureButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="18L-Ka-4RY"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="N6w-86-X6v" firstAttribute="centerY" secondItem="oU9-nK-4Gs" secondAttribute="centerY" id="aOu-H5-8bi"/>
+                                                <constraint firstItem="N6w-86-X6v" firstAttribute="centerX" secondItem="oU9-nK-4Gs" secondAttribute="centerX" id="j1z-RO-sEZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="P64-Mt-0qc">
+                                        <rect key="frame" x="0.0" y="314" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P64-Mt-0qc" id="315-E4-QTe">
                                             <frame key="frameInset" width="375" height="50"/>
@@ -136,6 +209,9 @@
                                                     <state key="normal" title="Change Password">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="changePasswordButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="28F-fG-v3b"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -146,7 +222,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1zJ-8X-Xnh">
-                                        <rect key="frame" x="0.0" y="214" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="364" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1zJ-8X-Xnh" id="WbK-I9-fnt">
                                             <frame key="frameInset" width="375" height="50"/>
@@ -156,6 +232,9 @@
                                                     <state key="normal" title="Connect Venmo">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="connectVenmoButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="MpD-x4-8oP"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -166,7 +245,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jI5-Uv-uUw">
-                                        <rect key="frame" x="0.0" y="264" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="414" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jI5-Uv-uUw" id="EHj-9C-349">
                                             <frame key="frameInset" width="375" height="50"/>
@@ -176,6 +255,9 @@
                                                     <state key="normal" title="Change Email">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="changeEmailButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="WeT-fF-03W"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -186,7 +268,7 @@
                                         <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cHo-aN-YSy">
-                                        <rect key="frame" x="0.0" y="314" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="464" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cHo-aN-YSy" id="jlR-ld-w3O">
                                             <frame key="frameInset" width="375" height="50"/>
@@ -196,6 +278,9 @@
                                                     <state key="normal" title="Logout">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="logOutButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="5Tk-sC-el4"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -206,7 +291,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2EQ-cR-ZAP">
-                                        <rect key="frame" x="0.0" y="364" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="514" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2EQ-cR-ZAP" id="ru9-NZ-WGl">
                                             <frame key="frameInset" width="375" height="50"/>
@@ -216,6 +301,9 @@
                                                     <state key="normal" title="Delete Account">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="deleteAccountButtonWithSender:" destination="l2J-Nf-6HR" eventType="touchUpInside" id="x4e-xd-80i"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -254,7 +342,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hy5-rz-5v3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-575.20000000000005" y="-36.431784107946029"/>
+            <point key="canvasLocation" x="-375" y="-36"/>
         </scene>
     </scenes>
 </document>

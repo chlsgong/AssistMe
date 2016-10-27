@@ -12,6 +12,8 @@ import Firebase
 
 class ProfileViewController: UIViewController {
     
+    var ref: FIRDatabaseReference!
+    
     let user = FIRAuth.auth()?.currentUser
     
     @IBOutlet weak var usernameLabel: UILabel!
@@ -28,6 +30,8 @@ class ProfileViewController: UIViewController {
         if let font = UIFont(name: "Helvetica", size: 18.0) {
             self.settingsButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
         }
+        ref = FIRDatabase.database().reference()
+        //TODO: Read the values of description and skills
         
         usernameLabel.text = user?.displayName
         profileImage.image = user?.photoURL
