@@ -11,13 +11,20 @@ import UIKit
 import Firebase
 
 class SettingsTableViewController: UITableViewController {
-    // TODO: Add buttons for changing image, description, and skills
+    
+    //TODO: Needs functionality testing
     
     var alertController:UIAlertController? = nil
     var loginTextField: UITextField? = nil
     var passwordTextField: UITextField? = nil
     
     let user = FIRAuth.auth()?.currentUser
+    
+    var ref: FIRDatabaseReference!
+    
+    init() {
+        ref = FIRDatabase.database().reference()
+    }
     
     @IBAction func changeUsernameButton(sender: AnyObject) {
         let changeRequest = user.profileChangeRequest()
@@ -62,15 +69,100 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func editDescriptionButton(sender: AnyObject) {
-       //TODO: Access Description
+        self.alertController = UIAlertController(title: "Change Description", message: "Enter your new description", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+        
+        self.alertController!.addAction(OKAction)
+        self.alertController!.addAction(cancelAction)
+        
+        self.alertController!.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            self.loginTextField = textField
+            self.loginTextField?.placeholder = "Describe yourself"
+        }
+        self.presentViewController(self.alertController!, animated: true, completion: nil)
+        
+        
+        // Not sure if this needs the whole commit change with completion stuff the others need since it accesses the data differently
+        self.ref.child("profile/(user.uid)/description").setValue(self.loginTextField!.text!)
+        
+        self.alertController = UIAlertController(title: "Success", message: "Your username has been changed.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+        self.alertController!.addAction(cancelAction)
+        self.alertController!.addAction(OKAction)
+                
+        self.presentViewController(self.alertController!, animated: true, completion:nil)
     }
     
     @IBAction func editSkillsButton(sender: AnyObject) {
-        // TODO: Create a skills database entry and then access it
+        self.alertController = UIAlertController(title: "Edit Skills", message: "What are your skills?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+        
+        self.alertController!.addAction(OKAction)
+        self.alertController!.addAction(cancelAction)
+        
+        self.alertController!.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            self.loginTextField = textField
+            self.loginTextField?.placeholder = "List skills here"
+        }
+        self.presentViewController(self.alertController!, animated: true, completion: nil)
+        
+        
+        // Not sure if this needs the whole commit change with completion stuff the others need since it accesses the data differently
+        self.ref.child("profile/(user.uid)/skills").setValue(self.loginTextField!.text!)
+        
+        self.alertController = UIAlertController(title: "Success", message: "Your username has been changed.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        self.alertController!.addAction(cancelAction)
+        self.alertController!.addAction(OKAction)
+        
+        self.presentViewController(self.alertController!, animated: true, completion:nil)
     }
     
     @IBAction func changeProfilePictureButton(sender: AnyObject) {
-        // TODO: Add picture choosing functionality
+        // Not sure how to go about getting images from anything other than a URL
+        let changeRequest = user.profileChangeRequest()
+        
+        self.alertController = UIAlertController(title: "Change Profile Picture", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+        
+        self.alertController!.addAction(OKAction)
+        self.alertController!.addAction(cancelAction)
+        
+        self.alertController!.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            self.loginTextField = textField
+            self.loginTextField?.placeholder = "Enter image url"
+        }
+        
+        self.presentViewController(self.alertController!, animated: true, completion: nil)
+        
+        changeRequest.photoURL = self.loginTextField!.text!
+        
+        changeRequest.commitChangesWithCompletion { error in
+            if let error = error {
+                self.alertController = UIAlertController(title: "Change failed", message: "Unable to change profile picture", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+                self.alertController!.addAction(OKAction)
+                
+                self.presentViewController(self.alertController!, animated: true, completion:nil)
+            } else {
+                self.alertController = UIAlertController(title: "Success", message: "Your profile picture has been changed.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
+                self.alertController!.addAction(cancelAction)
+                
+                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+                self.alertController!.addAction(OKAction)
+                
+                self.presentViewController(self.alertController!, animated: true, completion:nil)
+            }
+        }
     }
     
     @IBAction func changePasswordButton(sender: AnyObject) {
