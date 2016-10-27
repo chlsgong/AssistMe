@@ -10,18 +10,33 @@ import Foundation
 import UIKit
 import Firebase
 
-class SettingsTableViewController: UITableViewController {
+class SettingsViewController: UIViewController {
+    
+    var alertController:UIAlertController? = nil
+    var loginTextField: UITextField? = nil
+    var passwordTextField: UITextField? = nil
     
     let user = FIRAuth.auth()?.currentUser
     
     @IBAction func changeUsernameButton(sender: AnyObject) {
         let changeRequest = user.profileChangeRequest()
         
-        changeRequest.displayName = "Jane Q. User"
+        self.alertController = UIAlertController(title: "Change Username", message: "Please enter a new username.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        self.alertController!.addAction(ok)
+        self.alertController!.addAction(cancel)
+        
+        self.alertController!.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            self.loginTextField = textField
+            self.loginTextField?.placeholder = "Enter your username"
+
+        
+        changeRequest.displayName = self.loginTextField!.text!
         changeRequest.commitChangesWithCompletion { error in
             if let error = error {
                 // An error happened.
             } else {
+                
                 // Profile updated.
             }
         }
