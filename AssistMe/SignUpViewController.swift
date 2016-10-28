@@ -13,6 +13,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var errorMessageLabel: UILabel!
         
     let fbMgr = FirebaseManager.manager
 
@@ -20,6 +22,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        self.errorMessageLabel.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +36,9 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction func signUpButtonTapped(_ sender: AnyObject) {
+        // disable sign up button
+        signUpButton.isEnabled = false
+        
         let email = emailTextField.text!
         let password = passwordTextField.text!
         let confirmPassword = confirmPasswordTextField.text!
@@ -40,13 +46,19 @@ class SignUpViewController: UIViewController {
         if Utility.validEmail(email: email) && password == confirmPassword {
             fbMgr.signUp(email: email, password: password) { error in
                 if error == nil {
-                    print("signed up")
                     self.performSegue(withIdentifier: Identifier.signedUp, sender: nil)
                 }
                 else {
-                    print("unsuccessful")
+                    self.errorMessageLabel.text = error?.localizedDescription
+                    self.errorMessageLabel.isHidden = false
+                    self.signUpButton.isEnabled = true
                 }
             }
+        }
+        else {
+            self.errorMessageLabel.text = "\(ErrorMessage.invalidEmail) or \(ErrorMessage.confirmPassword)"
+            self.errorMessageLabel.isHidden = false
+            self.signUpButton.isEnabled = true
         }
     }
     

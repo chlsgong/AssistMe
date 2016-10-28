@@ -11,6 +11,8 @@ import UIKit
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var errorMessageLabel: UILabel!
     
     let fbMgr = FirebaseManager.manager
     
@@ -18,6 +20,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        errorMessageLabel.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,19 +34,28 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: AnyObject) {
+        // disable login button
+        loginButton.isEnabled = false
+        
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
         if Utility.validEmail(email: email) {
             fbMgr.signIn(email: email, password: password) { error in
                 if error == nil {
-                    print("signed in")
                     self.performSegue(withIdentifier: Identifier.loggedIn, sender: nil)
                 }
                 else {
-                    print("unsuccessful")
+                    self.errorMessageLabel.text = error?.localizedDescription
+                    self.errorMessageLabel.isHidden = false
+                    self.loginButton.isEnabled = true
                 }
             }
+        }
+        else {
+            self.errorMessageLabel.text = "\(ErrorMessage.invalidEmail)"
+            self.errorMessageLabel.isHidden = false
+            self.loginButton.isEnabled = true
         }
     }
     

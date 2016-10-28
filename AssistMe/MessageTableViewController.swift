@@ -17,12 +17,8 @@ class MessageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        FirebaseManager.manager.addStateListener { _ in
-//            print("finished")
-//            self.retrieveMessages()
-//        }
-        
         retrieveMessages()
+        updateMessages()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,8 +27,20 @@ class MessageTableViewController: UITableViewController {
     }
     
     func retrieveMessages() {
-        fbMgr.queryMessages { messages in
-            self.messages = messages
+        fbMgr.queryMessages { message in
+            self.messages.append(message)
+            self.tableView.reloadData()
+        }
+    }
+    
+    func updateMessages() {
+        fbMgr.updateMessages { message in
+            self.messages = self.messages.map {
+                if $0.sender.uid == message.sender.uid {
+                    return message
+                }
+                return $0
+            }
             self.tableView.reloadData()
         }
     }

@@ -61,7 +61,9 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func sendMessage(text: String, date: Date) {
-        fbMgr.sendMessage(toUID: receiverId, displayName: receiverDisplayName, text: text, date: date.toString())
+        let dateString = date.toStringWithJSQFormatter()
+        fbMgr.sendMessage(toUID: receiverId, displayName: receiverDisplayName, text: text, date: dateString)
+        
         // addMessage(senderId: self.senderId, senderDisplayName: self.senderDisplayName, date: date, text: text)
         
         // JSQSystemSoundPlayer.jsq_playMessageSentSound()
@@ -73,7 +75,8 @@ class ChatViewController: JSQMessagesViewController {
         fbMgr.queryMessageItems(forUID: self.receiverId) { messageItem in
             let senderUID = messageItem.sender.uid
             let senderDisplayName = (senderUID == self.senderId ? self.senderDisplayName : self.receiverDisplayName)!
-            let date = messageItem.date.toDate()!
+            // let date = messageItem.date.toDate()!
+            let date = Date()
             let text = messageItem.text
             
             self.addMessage(senderId: senderUID, senderDisplayName: senderDisplayName, date: date, text: text)
@@ -120,10 +123,6 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-//        let formatter = JSQMessagesTimestampFormatter.shared()
-//        let stringDate = formatter?.timestamp(for: date)
-//        print(stringDate)
-        
         sendMessage(text: text, date: date)
     }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JSQMessagesViewController
 
 class Utility {
     class func storyboard(forId id: String) -> UIStoryboard {
@@ -47,6 +48,11 @@ struct Asset {
     static let profileIcon = "ProfileIcon"
 }
 
+struct ErrorMessage {
+    static let invalidEmail = "Invalid characters in email address."
+    static let confirmPassword = "Passwords do not match."
+}
+
 // MARK: - Extensions
 
 extension UIView {
@@ -69,6 +75,10 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
         return dateFormatter.string(from: self)
+    }
+    func toStringWithJSQFormatter() -> String {
+        let formatter = JSQMessagesTimestampFormatter.shared()
+        return formatter!.timestamp(for: self)
     }
 }
 

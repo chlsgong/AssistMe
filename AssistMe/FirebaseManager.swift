@@ -98,29 +98,34 @@ class FirebaseManager {
         displayNameNodeRef.setValue(displayName)
     }
     
-    func queryMessages(completion: @escaping ([Message]) -> Void) {
-        query(forNodeRef: uidNodeRef(uid: currentUser!.uid)) { snapshot in
-            var messages = [Message]()
+    func queryMessages(completion: @escaping (Message) -> Void) {
+        query(forNodeRef: messageNodeRef(uid: currentUser!.uid), observationType: .childAdded) { snapshot in
+            let properties = snapshot.value as! NSDictionary
+            let uid = snapshot.key
+            let displayName = properties[self.displayName] as! String
+            let lastTextDate = properties[self.lastTextDate] as! String
+            let message = Message(uid: uid, displayName: displayName, date: lastTextDate)
             
-            for child in snapshot.children {
-                let childSnapshot = child as! FIRDataSnapshot
-                let properties = childSnapshot.value as! NSDictionary
-                let uid = childSnapshot.key
-                let displayName = properties[self.displayName] as! String
-                let date = properties[self.lastTextDate] as! String
-                let message = Message(uid: uid, displayName: displayName, date: date)
-                
-                messages.append(message)
-            }
+            completion(message)
+        }
+    }
+    
+    func updateMessages(completion: @escaping (Message) -> Void) {
+        query(forNodeRef: messageNodeRef(uid: currentUser!.uid), observationType: .childChanged) { snapshot in
+            let properties = snapshot.value as! NSDictionary
+            let uid = snapshot.key
+            let displayName = properties[self.displayName] as! String
+            let lastTextDate = properties[self.lastTextDate] as! String
+            let message = Message(uid: uid, displayName: displayName, date: lastTextDate)
             
-            completion(messages)
+            completion(message)
         }
     }
     
     func queryMessageItems(forUID uid: String, messageItemHandler: @escaping (Message) -> Void) {
         let messageItemNodeRef = messageNodeRef(uid: currentUser!.uid).child(messageItemPath(uid: uid))
         
-        query(forNodeRef: messageItemNodeRef) { snapshot in
+        query(forNodeRef: messageItemNodeRef, observationType: .childAdded) { snapshot in
             let properties = snapshot.value as! NSDictionary
             let senderUID = properties[self.sender] as! String
             let date = properties[self.date] as! String
@@ -158,9 +163,9 @@ class FirebaseManager {
         return profileNodeRef.child(messagePath)
     }
     
-    private func query(forNodeRef nodeRef: FIRDatabaseReference, snapshotHandler: @escaping (FIRDataSnapshot) -> Void) {
+    private func query(forNodeRef nodeRef: FIRDatabaseReference, observationType: FIRDataEventType, snapshotHandler: @escaping (FIRDataSnapshot) -> Void) {
         let query = nodeRef.queryLimited(toLast: 25)
-        query.observe(.childAdded) { snapshot in
+        query.observe(observationType) { snapshot in
             snapshotHandler(snapshot)
         }        
     }
