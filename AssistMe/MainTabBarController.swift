@@ -25,10 +25,9 @@ class MainTabBarController: UITabBarController {
     
     func setupTabControllers() {
         let segmentedVC = Utility.storyboard(forId: Identifier.communication).instantiateViewController(withIdentifier: Identifier.commNav) as! UINavigationController
-        let firstVC = UIViewController()
-        firstVC.view.backgroundColor = UIColor.orange
+        let profileVC = Utility.storyboard(forId: Identifier.profile).instantiateViewController(withIdentifier: Identifier.profileNav) as! UINavigationController
         
-        self.viewControllers = [segmentedVC, firstVC]
+        self.viewControllers = [segmentedVC, profileVC]
     }
     
     func setupTabBar() {

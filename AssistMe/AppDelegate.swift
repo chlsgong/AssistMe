@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = startUp
             }
         }
-        
+ 
         return true
     }
 

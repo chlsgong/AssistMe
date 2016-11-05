@@ -45,6 +45,8 @@ class ChatViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         setupChatBubbles()
+        
+        self.inputToolbar.contentView.leftBarButtonItem = nil
     }
     
     func setupChatBubbles() {

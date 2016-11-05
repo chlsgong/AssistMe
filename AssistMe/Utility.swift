@@ -26,6 +26,7 @@ struct Identifier {
     // Storyboards
     static let main = "Main"
     static let communication = "Communication"
+    static let profile = "Profile"
     
     // View Controllers
     static let startUp = "StartUp"
@@ -33,6 +34,7 @@ struct Identifier {
     static let commNav = "CommunicationNav"
     static let message = "Message"
     static let notification = "Notification"
+    static let profileNav = "ProfileNav"
     
     // TableView Cells
     static let messageCell = "MessageCell"

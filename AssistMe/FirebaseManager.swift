@@ -84,7 +84,7 @@ class FirebaseManager {
         lastTextDateNodeRef.setValue(date)
         // Update sender's display name for receiver
         displayNameNodeRef = messageNodeRef(uid: uid).child(displayNamePath(uid: currentUser!.uid))
-        displayNameNodeRef.setValue(currentUser!.displayName)
+        displayNameNodeRef.setValue(currentUser!.displayName ?? "Charles")
         
         // Add to senders's sent node
         messageItemNodeRef = messageNodeRef(uid: currentUser!.uid).child(messageItemPath(uid: uid))
