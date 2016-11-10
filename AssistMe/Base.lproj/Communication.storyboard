@@ -148,7 +148,7 @@
         <!--Chat View Controller-->
         <scene sceneID="uxE-gu-eNm">
             <objects>
-                <viewController id="d8u-Yh-etH" customClass="ChatViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d8u-Yh-etH" customClass="ChatViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v5q-qR-Uea"/>
                         <viewControllerLayoutGuide type="bottom" id="7hR-Ci-wUH"/>
@@ -168,7 +168,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CommunicationNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zcC-0M-b1P" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="hJU-d8-XOW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="hJU-d8-XOW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>

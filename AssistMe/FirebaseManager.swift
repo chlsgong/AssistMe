@@ -80,6 +80,22 @@ class FirebaseManager {
     
     // MARK: - Database functions
     
+    func addUser(byUid uid: String, displayName: String) {
+        let uidNodeRef = profileNodeRef.child(uid)
+        
+        // displayname rating skills
+        let profileContent: [String: Any] = [
+            self.displayName: displayName,
+            self.rating: [
+                self.averageRating: "0",
+                self.teamworkRating: "0",
+                self.skillRating: "0"
+            ]
+        ]
+        
+        uidNodeRef.setValue(profileContent)
+    }
+    
     func sendMessage(toUID uid: String, displayName: String, text: String, date: String) {
         var keyNodeRef: FIRDatabaseReference
         var displayNameNodeRef: FIRDatabaseReference
@@ -183,7 +199,7 @@ class FirebaseManager {
                 let skillRating = rating[self.skillRating] as! String
                 
                 let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
-                let job = Job(displayName: displayName, date: date, description: description, title: jobTitle, rating: userRating)
+                let job = Job(uid: uid, displayName: displayName, date: date, description: description, title: jobTitle, rating: userRating)
                 
                 jobHandler(job)
             }
@@ -206,11 +222,25 @@ class FirebaseManager {
                 let skillRating = rating[self.skillRating] as! String
                 
                 let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
-                let job = Job(displayName: displayName, date: date, description: description, title: jobTitle, rating: userRating)
+                let job = Job(uid: uid, displayName: displayName, date: date, description: description, title: jobTitle, rating: userRating)
                 
                 jobHandler(job)
             }
         }
+    }
+    
+    func postSkillsListing(date: String, skillOne: String, skillTwo: String, skillThree: String, skillFour: String) {
+        let skillsListing = [
+            self.date : date,
+            self.skillOne: skillOne,
+            self.skillTwo: skillTwo,
+            self.skillThree: skillThree,
+            self.skillFour: skillFour,
+            self.uid: currentUser!.uid
+        ]
+        
+        let newSkillsListing = skillsListingNodeRef.childByAutoId()
+        newSkillsListing.setValue(skillsListing)
     }
     
     func querySkillsListings(forUID uid: String, skillHandler: @escaping (Skill) -> Void) {

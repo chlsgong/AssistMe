@@ -36,6 +36,7 @@ struct Identifier {
     static let commNav = "CommunicationNav"
     static let message = "Message"
     static let notification = "Notification"
+    static let chat = "Chat"
     static let profileNav = "ProfileNav"
     static let jobListingNav = "JobListingNav"
     static let createListingNav = "CreateListingNav"
@@ -52,6 +53,9 @@ struct Identifier {
 }
 
 struct Asset {
+    static let jobIcon = "JobIcon"
+    static let skillIcon = "SkillIcon"
+    static let createIcon = "CreateIcon"
     static let messageIcon = "MessageIcon"
     static let profileIcon = "ProfileIcon"
 }

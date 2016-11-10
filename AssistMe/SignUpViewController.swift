@@ -48,10 +48,11 @@ class SignUpViewController: UIViewController {
         if Utility.validEmail(email: email) && password == confirmPassword {
             fbMgr.signUp(email: email, password: password) { error in
                 if error == nil {
-                    let usernameRequest = self.fbMgr.currentUser?.profileChangeRequest()
-                    usernameRequest?.displayName = username
-                    usernameRequest?.commitChanges { error in
+                    let usernameRequest = self.fbMgr.currentUser!.profileChangeRequest()
+                    usernameRequest.displayName = username
+                    usernameRequest.commitChanges { error in
                         if error == nil {
+                            self.fbMgr.addUser(byUid: self.fbMgr.currentUser!.uid, displayName: self.fbMgr.currentUser!.displayName!)
                             self.performSegue(withIdentifier: Identifier.signedUp, sender: nil)
                         }
                         else {

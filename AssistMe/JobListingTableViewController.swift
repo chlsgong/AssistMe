@@ -40,6 +40,7 @@ class JobListingTableViewController: UITableViewController {
             let destination = segue.destination as! JobListingViewController
             let job = jobs[self.tableView.indexPath(for: cell)!.row]
             
+            destination.uid = job.uid
             destination.jobTitle = job.title
             destination.displayName = job.displayName
             destination.jobDescription = job.description
@@ -67,9 +68,6 @@ class JobListingTableViewController: UITableViewController {
         cell.dateLabel.text = job.date
         cell.jobTitleLabel.text = job.title
         cell.descriptionTextView.text = job.description
-        cell.descriptionTextView.layer.borderWidth = 0.5
-        cell.descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
-        cell.descriptionTextView.layer.cornerRadius = 2.5
         cell.ratingLabel.text = job.rating.average
         
         return cell

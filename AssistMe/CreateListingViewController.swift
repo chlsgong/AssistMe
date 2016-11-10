@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateListingViewController: UIViewController {
+class CreateListingViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var listingTypeSegControl: UISegmentedControl!
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -22,6 +22,8 @@ class CreateListingViewController: UIViewController {
     @IBOutlet weak var biddableSwitch: UISwitch!
     @IBOutlet weak var skillsLabel: UILabel!
 
+    var confirmPostAlert: UIAlertController!
+    
     let fbMgr = FirebaseManager.manager
     
     override func viewDidLoad() {
@@ -29,11 +31,45 @@ class CreateListingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         toggleUI(segment: 0)
+        
+        setupUI()
+        
+        confirmPostAlert = setupAlertView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        super.touchesEnded(touches, with: event)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            view.endEditing(true)
+            return false
+        }
+        return true
+    }
+    
+    func setupUI() {
+        usernameLabel.text = fbMgr.currentUser?.displayName
+        
+        jobTitleTextField.delegate = self
+        jobDescriptionTextView.delegate = self
+        
+        skillOneTextField.delegate = self
+        skillTwoTextField.delegate = self
+        skillThreeTextField.delegate = self
+        skillFourTextField.delegate = self
     }
     
     func toggleUI(segment: Int) {
@@ -59,6 +95,15 @@ class CreateListingViewController: UIViewController {
         biddableTextLabel.isHidden = jobUIHidden
         biddableSwitch.isHidden = jobUIHidden
     }
+    
+    func setupAlertView() -> UIAlertController {
+        let alertController = UIAlertController(title: "Posted Complete", message: "Your post has been successfully posted on the listings feed.", preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(OKAction)
+        
+        return alertController
+    }
 
     @IBAction func listingTypeSegDidChange(_ sender: AnyObject) {
         let segmentedControl = sender as! UISegmentedControl
@@ -68,15 +113,31 @@ class CreateListingViewController: UIViewController {
     }
     
     @IBAction func postButtonTapped(_ sender: AnyObject) {
+        let date = Date().toStringFromDefaultDate()
+
         if listingTypeSegControl.selectedSegmentIndex == 0 {
-            let date = Date().toStringFromDefaultDate()
             let description = jobDescriptionTextView.text!
             let title = jobTitleTextField.text!
             
             fbMgr.postJobListing(date: date, description: description, jobTitle: title)
+            
+            jobDescriptionTextView.text = ""
+            jobTitleTextField.text = ""
         }
         else {
+            let skillOne = skillOneTextField.text!
+            let skillTwo = skillTwoTextField.text!
+            let skillThree = skillThreeTextField.text!
+            let skillFour = skillFourTextField.text!
             
+            fbMgr.postSkillsListing(date: date, skillOne: skillOne, skillTwo: skillTwo, skillThree: skillThree, skillFour: skillFour)
+            
+            skillOneTextField.text = ""
+            skillTwoTextField.text = ""
+            skillThreeTextField.text = ""
+            skillFourTextField.text = ""
         }
+        
+        self.present(confirmPostAlert, animated: true, completion: nil)
     }
 }

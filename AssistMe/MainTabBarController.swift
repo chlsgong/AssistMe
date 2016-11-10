@@ -24,12 +24,12 @@ class MainTabBarController: UITabBarController {
     }
     
     func setupTabControllers() {
-        let segmentedVC = Utility.storyboard(forId: Identifier.communication).instantiateViewController(withIdentifier: Identifier.commNav) as! UINavigationController
-        let profileVC = Utility.storyboard(forId: Identifier.profile).instantiateViewController(withIdentifier: Identifier.profileNav) as! UINavigationController
         let jobListingVC = Utility.storyboard(forId: Identifier.jobListing).instantiateViewController(withIdentifier: Identifier.jobListingNav) as! UINavigationController
         let createListingVC = Utility.storyboard(forId: Identifier.createListing).instantiateViewController(withIdentifier: Identifier.createListingNav) as! UINavigationController
+        let segmentedVC = Utility.storyboard(forId: Identifier.communication).instantiateViewController(withIdentifier: Identifier.commNav) as! UINavigationController
+        let profileVC = Utility.storyboard(forId: Identifier.profile).instantiateViewController(withIdentifier: Identifier.profileNav) as! UINavigationController
 
-        self.viewControllers = [segmentedVC, profileVC, jobListingVC, createListingVC]
+        self.viewControllers = [jobListingVC, createListingVC, segmentedVC, profileVC]
     }
     
     func setupTabBar() {
@@ -37,8 +37,10 @@ class MainTabBarController: UITabBarController {
         self.tabBar.isTranslucent = false
         
         let tabBarItems = self.tabBar.items
-        tabBarItems?[0].setupTabBarItem(withImage: Asset.messageIcon)
-        tabBarItems?[1].setupTabBarItem(withImage: Asset.profileIcon)
+        tabBarItems?[0].setupTabBarItem(withImage: Asset.jobIcon)
+        tabBarItems?[1].setupTabBarItem(withImage: Asset.createIcon)
+        tabBarItems?[2].setupTabBarItem(withImage: Asset.messageIcon)
+        tabBarItems?[3].setupTabBarItem(withImage: Asset.profileIcon)
     }
 
 }
