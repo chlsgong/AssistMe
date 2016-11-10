@@ -20,16 +20,23 @@ class FirebaseManager {
     private let lastTextDate = "lastTextDate"
     private let displayName = "displayName"
     private let messageItem = "messageItem"
+    private let rating = "rating"
+    private let skillRating = "skillRating"
+    private let teamworkRating = "teamworkRating"
+    private let averageRating = "averageRating"
     private let text = "text"
     private let date = "date"
     private let sender = "sender"
     private let notification = "notification"
+    private let skillListing = "skills-listing"
     
     private let rootNodeRef = FIRDatabase.database().reference()
     private let profileNodeRef: FIRDatabaseReference
+    private let skillListingNodeRef: FIRDatabaseReference
     
     private init() {
         profileNodeRef = rootNodeRef.child(profile)
+        skillListingNodeRef = rootNodeRef.child(skillListing)
     }
     
     // MARK: - Authentication functions
@@ -122,6 +129,34 @@ class FirebaseManager {
         }
     }
     
+    func querySkillListings(completion: @escaping (SkillListing) -> Void) {
+        query(forNodeRef: skillListingNodeRef, observationType: .childAdded) { snapshot in
+            let properties = snapshot.value as! NSDictionary
+            let date = properties[self.date] as! String
+            let skillOne = properties["skillOne"] as? String
+            let skillTwo = properties["skillTwo"] as? String
+            let skillThree = properties["skillThree"] as? String
+            let skillFour = properties["skillFour"] as? String
+
+            let uid = properties["uid"] as! String
+            
+            self.query(forUID: uid) { snapshot in
+                let profile = snapshot.value as! NSDictionary
+                let displayName = profile[self.displayName] as! String
+                let rating = profile[self.rating] as! NSDictionary
+                let averageRating = rating[self.averageRating] as! String
+                let teamworkRating = rating[self.teamworkRating] as! String
+                let skillRating = rating[self.skillRating] as! String
+            
+                let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
+                let skill = SkillListing(username:displayName, skillOne:skillOne!, skillTwo:skillTwo!, skillThree:skillThree!, skillFour:skillFour!, date:date, rating:userRating)
+                
+                completion(skill)
+            }
+        }
+    }
+    
+    
     func queryMessageItems(forUID uid: String, messageItemHandler: @escaping (Message) -> Void) {
         let messageItemNodeRef = messageNodeRef(uid: currentUser!.uid).child(messageItemPath(uid: uid))
         
@@ -168,6 +203,13 @@ class FirebaseManager {
         query.observe(observationType) { snapshot in
             snapshotHandler(snapshot)
         }        
+    }
+    
+    private func query(forUID uid: String, snapshotHandler: @escaping (FIRDataSnapshot) -> Void) {
+        let query = profileNodeRef.queryEqual(toValue: nil, childKey:  uid)
+        query.observeSingleEvent(of: .childAdded) { snapshot in
+        snapshotHandler(snapshot)
+        }
     }
     
 }

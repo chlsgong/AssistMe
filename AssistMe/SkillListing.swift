@@ -15,13 +15,15 @@ class SkillListing {
     var skillThree: String = ""
     var skillFour: String = ""
     var date:String = ""
+    var rating:Rating?
     
-    init(username:String, skillOne:String, skillTwo:String, skillThree:String, skillFour:String, date:String) {
+    init(username:String, skillOne:String, skillTwo:String, skillThree:String, skillFour:String, date:String, rating:Rating) {
         self.username = username
         self.skillOne = skillOne
         self.skillTwo = skillTwo
         self.skillThree = skillThree
         self.skillFour = skillFour
         self.date = date
+        self.rating = rating
     }
 }

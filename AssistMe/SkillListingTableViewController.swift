@@ -13,40 +13,28 @@ class SkillListingTableViewController: UITableViewController {
 
     var ref: FIRDatabaseReference!
     var skillListings = [SkillListing]()
-
+    let fbMgr = FirebaseManager.manager
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ref = FIRDatabase.database().reference().child("skills-listing")
-        
-        
-        ref.observe(.childAdded, with: { (snapshot) -> Void in
-            let properties = snapshot.value as! NSDictionary
-            
-            let skillOne = properties["skillOne"] as? String
-            let skillTwo = properties["skillTwo"] as? String
-            let skillThree = properties["skillThree"] as? String
-            let skillFour = properties["skillFour"] as? Double
-            let date = properties["date"] as? String
-            
-            self.skillListings.append(SkillListing(skillOne: skillOne!, skillTwo: skillTwo!, skillThree: skillThree!, skillFour: skillFour!, date: date!))
-            self.tableView.reloadData()
+        queryJobs()
 //            self.tableView.insertRows(at: [IndexPath(row: self.skillListings.count-1, section:0)], with: UITableViewRowAnimation.automatic)
-        })
+        }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    func queryJobs() {
+        fbMgr.querySkillListings { skill in
+            self.skillListings.append(skill)
+            self.tableView.reloadData()
+        }
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -120,7 +108,7 @@ class SkillListingTableViewController: UITableViewController {
         if (segue.identifier == "skillListingDetails") {
             let viewController:SkillListingViewController = (segue.destination as? SkillListingViewController)!
             let indexPath = self.tableView.indexPathForSelectedRow!
-            viewController.listing = (skillListings[indexPath.row] as? SkillListing)!
+            viewController.listing = skillListings[indexPath.row]
         }
 
     }

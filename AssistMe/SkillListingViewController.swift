@@ -16,6 +16,8 @@ class SkillListingViewController: UIViewController {
     @IBOutlet weak var skillTwo: UILabel!
     @IBOutlet weak var skillThree: UILabel!
     @IBOutlet weak var skillFour: UILabel!
+    @IBOutlet weak var teamRating: UILabel!
+    @IBOutlet weak var skillRating: UILabel!
     
     var listing: SkillListing?
     
@@ -28,7 +30,8 @@ class SkillListingViewController: UIViewController {
         skillThree.text = listing!.skillThree
         skillFour.text = listing!.skillFour
         date.text = listing!.date
-
+        teamRating.text = listing!.rating!.teamwork
+        skillRating.text = listing!.rating!.skill
         
         // Do any additional setup after loading the view.
     }

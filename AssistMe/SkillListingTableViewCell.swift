@@ -13,7 +13,7 @@ class SkillListingTableViewCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     
     @IBOutlet weak var skillOne: UILabel!
-    @IBOutlet weak var skillTwo: UIView!
+    @IBOutlet weak var skillTwo: UILabel!
     @IBOutlet weak var skillThree: UILabel!
     @IBOutlet weak var skillFour: UILabel!
     @IBOutlet weak var date: UILabel!
