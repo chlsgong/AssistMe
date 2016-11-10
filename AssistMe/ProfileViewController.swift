@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     
     var jobs: [Job] = []
+    var skills: [Skill] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,9 +78,16 @@ class ProfileViewController: UIViewController {
     }
     
     fileprivate func reloadData() {
-        fbMgr.queryJobListings(forUID: user!.uid) { job in
-            self.jobs = [job]
-            self.listingsTableView.reloadData()
+        if segmentedTableViewController.selectedSegmentIndex == 0 {
+            fbMgr.queryJobListings(forUID: user!.uid) { job in
+                self.jobs = [job]
+                self.listingsTableView.reloadData()
+            }
+        } else {
+            fbMgr.querySkillsListings(forUID: user!.uid) { skill in
+                self.skills = [skill]
+                self.listingsTableView.reloadData()
+            }
         }
     }
 }
@@ -93,8 +101,14 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListingCell", for: indexPath)
         
-        cell.textLabel?.text = jobs[indexPath.row].title
-        cell.detailTextLabel?.text = jobs[indexPath.row].date
+        if segmentedTableViewController.selectedSegmentIndex == 0 {
+            cell.textLabel?.text = jobs[indexPath.row].title
+            cell.detailTextLabel?.text = jobs[indexPath.row].date
+        } else {
+            cell.textLabel?.text = skills[indexPath.row].skillOne
+            cell.detailTextLabel?.text = skills[indexPath.row].date
+        }
+        
         
         return cell
     }
