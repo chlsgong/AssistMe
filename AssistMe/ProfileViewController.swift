@@ -13,20 +13,27 @@ import Firebase
 class ProfileViewController: UIViewController {
     
     var ref: FIRDatabaseReference!
-    
+    let fbMgr = FirebaseManager.manager
     let user = FIRAuth.auth()?.currentUser
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var skillsLabel: UILabel!
-    
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var listingsTableView: UITableView!
+    @IBOutlet weak var segmentedTableViewController: UISegmentedControl!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     
-    @IBOutlet var settingsButton: UIBarButtonItem!
+    var jobs: [Job] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        reloadInfo()
+        reloadData()
+    }
+    
+    private func reloadInfo() {
         // Not sure if this works; Supposed to make the settings button look like a little gear thing
         self.settingsButton.title = NSString(string: "\u{2699}") as String
         if let font = UIFont(name: "Helvetica", size: 18.0) {
@@ -35,25 +42,65 @@ class ProfileViewController: UIViewController {
         
         ref = FIRDatabase.database().reference()
         
-        let userID = user?.uid
+        if let userID = user?.uid {
+            usernameLabel.text = userID
+        } else {
+            usernameLabel.text = ""
+        }
         
-        ref.observeSingleEvent(of: .value, with: { snapshot in
-            if !snapshot.exists() { return }
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("profile").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let description = value?["description"] as? String ?? ""
+            let skills = value?["skills"] as? String ?? ""
             
-            let properties = snapshot.value as! NSDictionary
-            
-            if let description = properties["description"] as? String {
+            if description != "" {
                 self.descriptionLabel.text = description
+            } else {
+                self.descriptionLabel.text = ""
             }
             
-            if let skills = properties["skills"] as? String {
+            if skills != "" {
                 self.skillsLabel.text = skills
+            } else {
+                self.skillsLabel.text = ""
             }
             
-        })
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
         usernameLabel.text = user?.displayName
         // profileImage.image = user?.photoURL
     }
+    
+    fileprivate func reloadData() {
+        fbMgr.queryJobListings(forUID: user!.uid) { job in
+            self.jobs = [job]
+            self.listingsTableView.reloadData()
+        }
+    }
+}
+
+
+extension ProfileViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return jobs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListingCell", for: indexPath)
+        
+        cell.textLabel?.text = jobs[indexPath.row].title
+        cell.detailTextLabel?.text = jobs[indexPath.row].date
+        
+        return cell
+    }
+}
+
+
+extension ProfileViewController: UITableViewDelegate {
     
 }
