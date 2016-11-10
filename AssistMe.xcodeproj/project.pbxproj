@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E43FF371DD15057003106D8 /* SkillListings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E43FF361DD15057003106D8 /* SkillListings.storyboard */; };
+		0E43FF3B1DD25F04003106D8 /* SkillListingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E43FF3A1DD25F04003106D8 /* SkillListingTableViewController.swift */; };
+		0E43FF3D1DD26334003106D8 /* SkillListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E43FF3C1DD26334003106D8 /* SkillListing.swift */; };
+		0E43FF3F1DD265A1003106D8 /* SkillListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E43FF3E1DD265A1003106D8 /* SkillListingViewController.swift */; };
+		0E98627C1DD2876700453DFA /* SkillListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E98627B1DD2876700453DFA /* SkillListingTableViewCell.swift */; };
 		D10E50D41DBF16230076F3C9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E50D31DBF16230076F3C9 /* LoginViewController.swift */; };
 		D114D0FE1DC2F4BC004FC7FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114D0FC1DC2F4BC004FC7FA /* ProfileViewController.swift */; };
 		D114D0FF1DC2F4BC004FC7FA /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114D0FD1DC2F4BC004FC7FA /* SettingsTableViewController.swift */; };
@@ -34,6 +39,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E43FF361DD15057003106D8 /* SkillListings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SkillListings.storyboard; sourceTree = "<group>"; };
+		0E43FF3A1DD25F04003106D8 /* SkillListingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillListingTableViewController.swift; sourceTree = "<group>"; };
+		0E43FF3C1DD26334003106D8 /* SkillListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillListing.swift; sourceTree = "<group>"; };
+		0E43FF3E1DD265A1003106D8 /* SkillListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillListingViewController.swift; sourceTree = "<group>"; };
+		0E98627B1DD2876700453DFA /* SkillListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillListingTableViewCell.swift; sourceTree = "<group>"; };
 		7C3EA22F1E4DEF67B5A71080 /* Pods-AssistMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssistMe/Pods-AssistMe.debug.xcconfig"; sourceTree = "<group>"; };
 		B56B5DECDBE22CD480D8DFF8 /* Pods_AssistMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssistMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10E50D31DBF16230076F3C9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +148,11 @@
 				D1C814051DACD08400775451 /* GoogleService-Info.plist */,
 				D1C814041DACC57C00775451 /* AssistMe.entitlements */,
 				D114D1031DC30377004FC7FA /* ReadMe.txt */,
+				0E43FF3C1DD26334003106D8 /* SkillListing.swift */,
+				0E98627B1DD2876700453DFA /* SkillListingTableViewCell.swift */,
+				0E43FF3A1DD25F04003106D8 /* SkillListingTableViewController.swift */,
+				0E43FF3E1DD265A1003106D8 /* SkillListingViewController.swift */,
+				0E43FF361DD15057003106D8 /* SkillListings.storyboard */,
 				D19595C61DC076820066F9AA /* Resources */,
 			);
 			path = AssistMe;
@@ -227,6 +242,7 @@
 				D1C813F51DACB18B00775451 /* Main.storyboard in Resources */,
 				D19595C81DC07E6E0066F9AA /* CircledLeft.png in Resources */,
 				D19595C51DC0767D0066F9AA /* HelpingHandFilled.png in Resources */,
+				0E43FF371DD15057003106D8 /* SkillListings.storyboard in Resources */,
 				D114D1041DC30377004FC7FA /* ReadMe.txt in Resources */,
 				D13EF9B91DB5CA52009868C8 /* Communication.storyboard in Resources */,
 			);
@@ -293,7 +309,10 @@
 				D1ACD5AF1DB2E83E00D11E22 /* ChatViewController.swift in Sources */,
 				D151D4DC1DB863970004B1F8 /* Message.swift in Sources */,
 				D119F6811DB9BC5E0007600F /* Sender.swift in Sources */,
+				0E98627C1DD2876700453DFA /* SkillListingTableViewCell.swift in Sources */,
+				0E43FF3D1DD26334003106D8 /* SkillListing.swift in Sources */,
 				D114D0FF1DC2F4BC004FC7FA /* SettingsTableViewController.swift in Sources */,
+				0E43FF3F1DD265A1003106D8 /* SkillListingViewController.swift in Sources */,
 				D1C813F01DACB18B00775451 /* AppDelegate.swift in Sources */,
 				D1A8A8B11DB6925E001CF70D /* FirebaseManager.swift in Sources */,
 				D1B3DBE11DB3034B00ECE0A2 /* MessageTableViewController.swift in Sources */,
@@ -301,6 +320,7 @@
 				D114D0FE1DC2F4BC004FC7FA /* ProfileViewController.swift in Sources */,
 				D1B3DBE31DB3293D00ECE0A2 /* Utility.swift in Sources */,
 				D10E50D41DBF16230076F3C9 /* LoginViewController.swift in Sources */,
+				0E43FF3B1DD25F04003106D8 /* SkillListingTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
