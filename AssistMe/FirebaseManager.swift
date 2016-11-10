@@ -24,12 +24,22 @@ class FirebaseManager {
     private let date = "date"
     private let sender = "sender"
     private let notification = "notification"
+    private let rating = "rating"
+    private let averageRating = "averageRating"
+    private let skillRating = "skillRating"
+    private let teamworkRating = "teamworkRating"
+    private let jobListing = "job-listing"
+    private let description = "description"
+    private let jobTitle = "jobTitle"
+    private let uid = "uid"
     
     private let rootNodeRef = FIRDatabase.database().reference()
     private let profileNodeRef: FIRDatabaseReference
+    private let jobListingNodeRef: FIRDatabaseReference
     
     private init() {
         profileNodeRef = rootNodeRef.child(profile)
+        jobListingNodeRef = rootNodeRef.child(jobListing)
     }
     
     // MARK: - Authentication functions
@@ -137,6 +147,42 @@ class FirebaseManager {
         }
     }
     
+    func postJobListing(date: String, description: String, jobTitle: String) {
+        let jobListing = [
+            self.date : date,
+            self.description: description,
+            self.jobTitle: jobTitle,
+            self.uid: currentUser!.uid
+        ]
+        
+        let newJobListingRef = jobListingNodeRef.childByAutoId()
+        newJobListingRef.setValue(jobListing)
+    }
+    
+    func queryJobListings(completion: @escaping (Job) -> Void) {
+        query(forNodeRef: jobListingNodeRef, observationType: .childAdded) { snapshot in
+            let properties = snapshot.value as! NSDictionary
+            let date = properties[self.date] as! String
+            let description = properties[self.description] as! String
+            let jobTitle = properties[self.jobTitle] as! String
+            let uid = properties[self.uid] as! String
+            
+            self.query(forUID: uid) { snapshot in
+                let profile = snapshot.value as! NSDictionary
+                let displayName = profile[self.displayName] as! String
+                let rating = profile[self.rating] as! NSDictionary
+                let averageRating = rating[self.averageRating] as! String
+                let teamworkRating = rating[self.teamworkRating] as! String
+                let skillRating = rating[self.skillRating] as! String
+                
+                let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
+                let job = Job(displayName: displayName, date: date, description: description, title: jobTitle, rating: userRating)
+                
+                completion(job)
+            }
+        }
+    }
+    
     // MARK: - Helper functions
     
     // uid/displayName
@@ -168,6 +214,13 @@ class FirebaseManager {
         query.observe(observationType) { snapshot in
             snapshotHandler(snapshot)
         }        
+    }
+    
+    private func query(forUID uid: String, snapshotHandler: @escaping (FIRDataSnapshot) -> Void) {
+        let query = profileNodeRef.queryEqual(toValue: nil, childKey:  uid)
+        query.observeSingleEvent(of: .childAdded) { snapshot in
+            snapshotHandler(snapshot)
+        }
     }
     
 }

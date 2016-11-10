@@ -13,7 +13,17 @@
 		D114D1021DC2F4D5004FC7FA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D114D1001DC2F4D5004FC7FA /* Profile.storyboard */; };
 		D114D1041DC30377004FC7FA /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = D114D1031DC30377004FC7FA /* ReadMe.txt */; };
 		D119F6811DB9BC5E0007600F /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119F6801DB9BC5E0007600F /* Sender.swift */; };
+		D11AAFF11DD31217005E6044 /* SpeechBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = D11AAFF01DD31217005E6044 /* SpeechBubble.png */; };
+		D11AAFF31DD3B8AA005E6044 /* JobListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11AAFF21DD3B8AA005E6044 /* JobListingViewController.swift */; };
+		D11AAFF51DD3BB81005E6044 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11AAFF41DD3BB81005E6044 /* Rating.swift */; };
+		D11AAFF71DD3C013005E6044 /* CreateListing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11AAFF61DD3C013005E6044 /* CreateListing.storyboard */; };
+		D11AAFF91DD3C5AF005E6044 /* PinFilled.png in Resources */ = {isa = PBXBuildFile; fileRef = D11AAFF81DD3C5AF005E6044 /* PinFilled.png */; };
+		D11AAFFB1DD3D4B5005E6044 /* CreateListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11AAFFA1DD3D4B5005E6044 /* CreateListingViewController.swift */; };
 		D13EF9B91DB5CA52009868C8 /* Communication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D13EF9B71DB5CA52009868C8 /* Communication.storyboard */; };
+		D14236431DD291D8003626AE /* JobListing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D14236421DD291D8003626AE /* JobListing.storyboard */; };
+		D14236451DD2A265003626AE /* JobListingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14236441DD2A265003626AE /* JobListingTableViewController.swift */; };
+		D14236471DD2A27A003626AE /* JobListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14236461DD2A27A003626AE /* JobListingTableViewCell.swift */; };
+		D14236491DD2A3F6003626AE /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14236481DD2A3F6003626AE /* Job.swift */; };
 		D151D4DC1DB863970004B1F8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D4DB1DB863970004B1F8 /* Message.swift */; };
 		D17DC05A1DC01B0A00F0423C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DC0591DC01B0A00F0423C /* MainTabBarController.swift */; };
 		D19595C51DC0767D0066F9AA /* HelpingHandFilled.png in Resources */ = {isa = PBXBuildFile; fileRef = D19595C41DC0767D0066F9AA /* HelpingHandFilled.png */; };
@@ -42,7 +52,17 @@
 		D114D1011DC2F4D5004FC7FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		D114D1031DC30377004FC7FA /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		D119F6801DB9BC5E0007600F /* Sender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		D11AAFF01DD31217005E6044 /* SpeechBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SpeechBubble.png; path = Resources/SpeechBubble.png; sourceTree = "<group>"; };
+		D11AAFF21DD3B8AA005E6044 /* JobListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobListingViewController.swift; sourceTree = "<group>"; };
+		D11AAFF41DD3BB81005E6044 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		D11AAFF61DD3C013005E6044 /* CreateListing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateListing.storyboard; sourceTree = "<group>"; };
+		D11AAFF81DD3C5AF005E6044 /* PinFilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PinFilled.png; path = Resources/PinFilled.png; sourceTree = "<group>"; };
+		D11AAFFA1DD3D4B5005E6044 /* CreateListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateListingViewController.swift; sourceTree = "<group>"; };
 		D13EF9B81DB5CA52009868C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Communication.storyboard; sourceTree = "<group>"; };
+		D14236421DD291D8003626AE /* JobListing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JobListing.storyboard; sourceTree = "<group>"; };
+		D14236441DD2A265003626AE /* JobListingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobListingTableViewController.swift; sourceTree = "<group>"; };
+		D14236461DD2A27A003626AE /* JobListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobListingTableViewCell.swift; sourceTree = "<group>"; };
+		D14236481DD2A3F6003626AE /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		D151D4DB1DB863970004B1F8 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D17DC0591DC01B0A00F0423C /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D19595C41DC0767D0066F9AA /* HelpingHandFilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HelpingHandFilled.png; path = Resources/HelpingHandFilled.png; sourceTree = "<group>"; };
@@ -88,6 +108,8 @@
 		D19595C61DC076820066F9AA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D11AAFF81DD3C5AF005E6044 /* PinFilled.png */,
+				D11AAFF01DD31217005E6044 /* SpeechBubble.png */,
 				D19595C71DC07E6E0066F9AA /* CircledLeft.png */,
 				D19595C41DC0767D0066F9AA /* HelpingHandFilled.png */,
 			);
@@ -119,18 +141,26 @@
 				D1B3DBE21DB3293D00ECE0A2 /* Utility.swift */,
 				D119F6801DB9BC5E0007600F /* Sender.swift */,
 				D151D4DB1DB863970004B1F8 /* Message.swift */,
+				D11AAFF41DD3BB81005E6044 /* Rating.swift */,
+				D14236481DD2A3F6003626AE /* Job.swift */,
 				D1A8A8B01DB6925E001CF70D /* FirebaseManager.swift */,
 				D1C813F11DACB18B00775451 /* SignUpViewController.swift */,
 				D10E50D31DBF16230076F3C9 /* LoginViewController.swift */,
 				D17DC0591DC01B0A00F0423C /* MainTabBarController.swift */,
 				D1B3DBDC1DB3029400ECE0A2 /* SegmentedViewController.swift */,
 				D1B3DBE01DB3034B00ECE0A2 /* MessageTableViewController.swift */,
+				D1ACD5AE1DB2E83D00D11E22 /* ChatViewController.swift */,
 				D1B3DBDE1DB302AD00ECE0A2 /* NotificationTableViewController.swift */,
 				D114D0FC1DC2F4BC004FC7FA /* ProfileViewController.swift */,
 				D114D0FD1DC2F4BC004FC7FA /* SettingsTableViewController.swift */,
-				D1ACD5AE1DB2E83D00D11E22 /* ChatViewController.swift */,
+				D14236441DD2A265003626AE /* JobListingTableViewController.swift */,
+				D14236461DD2A27A003626AE /* JobListingTableViewCell.swift */,
+				D11AAFF21DD3B8AA005E6044 /* JobListingViewController.swift */,
+				D11AAFFA1DD3D4B5005E6044 /* CreateListingViewController.swift */,
 				D1C813F31DACB18B00775451 /* Main.storyboard */,
 				D13EF9B71DB5CA52009868C8 /* Communication.storyboard */,
+				D14236421DD291D8003626AE /* JobListing.storyboard */,
+				D11AAFF61DD3C013005E6044 /* CreateListing.storyboard */,
 				D114D1001DC2F4D5004FC7FA /* Profile.storyboard */,
 				D1C813F61DACB18B00775451 /* Assets.xcassets */,
 				D1C813F81DACB18B00775451 /* LaunchScreen.storyboard */,
@@ -220,15 +250,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11AAFF11DD31217005E6044 /* SpeechBubble.png in Resources */,
 				D1C813FA1DACB18B00775451 /* LaunchScreen.storyboard in Resources */,
 				D1C814061DACD08400775451 /* GoogleService-Info.plist in Resources */,
 				D114D1021DC2F4D5004FC7FA /* Profile.storyboard in Resources */,
 				D1C813F71DACB18B00775451 /* Assets.xcassets in Resources */,
+				D11AAFF71DD3C013005E6044 /* CreateListing.storyboard in Resources */,
 				D1C813F51DACB18B00775451 /* Main.storyboard in Resources */,
 				D19595C81DC07E6E0066F9AA /* CircledLeft.png in Resources */,
+				D11AAFF91DD3C5AF005E6044 /* PinFilled.png in Resources */,
 				D19595C51DC0767D0066F9AA /* HelpingHandFilled.png in Resources */,
 				D114D1041DC30377004FC7FA /* ReadMe.txt in Resources */,
 				D13EF9B91DB5CA52009868C8 /* Communication.storyboard in Resources */,
+				D14236431DD291D8003626AE /* JobListing.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,8 +321,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14236471DD2A27A003626AE /* JobListingTableViewCell.swift in Sources */,
 				D1B3DBDF1DB302AD00ECE0A2 /* NotificationTableViewController.swift in Sources */,
 				D1C813F21DACB18B00775451 /* SignUpViewController.swift in Sources */,
+				D11AAFF31DD3B8AA005E6044 /* JobListingViewController.swift in Sources */,
 				D17DC05A1DC01B0A00F0423C /* MainTabBarController.swift in Sources */,
 				D1ACD5AF1DB2E83E00D11E22 /* ChatViewController.swift in Sources */,
 				D151D4DC1DB863970004B1F8 /* Message.swift in Sources */,
@@ -296,10 +332,14 @@
 				D114D0FF1DC2F4BC004FC7FA /* SettingsTableViewController.swift in Sources */,
 				D1C813F01DACB18B00775451 /* AppDelegate.swift in Sources */,
 				D1A8A8B11DB6925E001CF70D /* FirebaseManager.swift in Sources */,
+				D11AAFFB1DD3D4B5005E6044 /* CreateListingViewController.swift in Sources */,
+				D11AAFF51DD3BB81005E6044 /* Rating.swift in Sources */,
 				D1B3DBE11DB3034B00ECE0A2 /* MessageTableViewController.swift in Sources */,
 				D1B3DBDD1DB3029400ECE0A2 /* SegmentedViewController.swift in Sources */,
 				D114D0FE1DC2F4BC004FC7FA /* ProfileViewController.swift in Sources */,
 				D1B3DBE31DB3293D00ECE0A2 /* Utility.swift in Sources */,
+				D14236491DD2A3F6003626AE /* Job.swift in Sources */,
+				D14236451DD2A265003626AE /* JobListingTableViewController.swift in Sources */,
 				D10E50D41DBF16230076F3C9 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

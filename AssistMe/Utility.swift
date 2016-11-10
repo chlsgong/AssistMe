@@ -27,6 +27,8 @@ struct Identifier {
     static let main = "Main"
     static let communication = "Communication"
     static let profile = "Profile"
+    static let jobListing = "JobListing"
+    static let createListing = "CreateListing"
     
     // View Controllers
     static let startUp = "StartUp"
@@ -35,14 +37,18 @@ struct Identifier {
     static let message = "Message"
     static let notification = "Notification"
     static let profileNav = "ProfileNav"
+    static let jobListingNav = "JobListingNav"
+    static let createListingNav = "CreateListingNav"
     
     // TableView Cells
     static let messageCell = "MessageCell"
+    static let jobListingCell = "JobListingCell"
     
     // Segues
     static let signedUp = "SignedUp"
     static let loggedIn = "LoggedIn"
     static let showChat = "ShowChat"
+    static let showJob = "ShowJob"
 }
 
 struct Asset {
@@ -73,7 +79,7 @@ extension UINavigationItem {
 }
 
 extension Date {
-    func toString() -> String {
+    func toStringFromJSQDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
         return dateFormatter.string(from: self)
@@ -81,6 +87,11 @@ extension Date {
     func toStringWithJSQFormatter() -> String {
         let formatter = JSQMessagesTimestampFormatter.shared()
         return formatter!.timestamp(for: self)
+    }
+    func toStringFromDefaultDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: self)
     }
 }
 

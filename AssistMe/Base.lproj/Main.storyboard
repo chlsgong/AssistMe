@@ -19,14 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oly-t6-M29">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="AYF-D3-BBs"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQo-yN-GWu">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
@@ -36,25 +28,9 @@
                                     <action selector="signUpButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mfN-xa-DQ2"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IfO-nk-9QC">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="gAq-lc-h3N"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-YZ-IYO">
                                 <state key="normal" title="Facebook"/>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dRh-12-Fld">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="aPA-Hd-fa4"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clk-2d-fAY">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="7aU-Zh-4da"/>
@@ -70,11 +46,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKB-YQ-a7r">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hOP-Jw-fk6"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oly-t6-M29">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="AYF-D3-BBs"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IfO-nk-9QC">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gAq-lc-h3N"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dRh-12-Fld">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="aPA-Hd-fa4"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.80392156859999997" green="0.96862745100000003" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Clk-2d-fAY" secondAttribute="bottom" constant="20" id="1YT-8h-Y7D"/>
+                            <constraint firstItem="yKB-YQ-a7r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Dgr-if-qWC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ya7-YZ-IYO" secondAttribute="bottom" constant="50" id="Hw9-cf-hzY"/>
+                            <constraint firstItem="Oly-t6-M29" firstAttribute="top" secondItem="yKB-YQ-a7r" secondAttribute="bottom" constant="10" id="ISx-Xk-eda"/>
                             <constraint firstItem="IfO-nk-9QC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="JgR-WJ-lkC"/>
                             <constraint firstItem="Ya7-YZ-IYO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LIx-X1-b2P"/>
                             <constraint firstItem="Clk-2d-fAY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Mfe-CU-Pb7"/>
@@ -87,10 +97,11 @@
                             <constraint firstItem="vQo-yN-GWu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Thu-PG-DNn"/>
                             <constraint firstItem="vQo-yN-GWu" firstAttribute="top" secondItem="dRh-12-Fld" secondAttribute="bottom" constant="40" id="bqm-rd-EX5"/>
                             <constraint firstItem="IfO-nk-9QC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="eBB-Fs-N5X"/>
+                            <constraint firstItem="yKB-YQ-a7r" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hwN-sQ-Mfd"/>
                             <constraint firstItem="Oly-t6-M29" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mFc-OZ-X6D"/>
                             <constraint firstItem="dRh-12-Fld" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tv9-zy-BTN"/>
                             <constraint firstItem="Oly-t6-M29" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ulZ-BY-bQC"/>
-                            <constraint firstItem="Oly-t6-M29" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="yMS-dc-LGC"/>
+                            <constraint firstItem="yKB-YQ-a7r" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="yAh-BU-bhx"/>
                         </constraints>
                     </view>
                     <connections>
@@ -99,6 +110,7 @@
                         <outlet property="errorMessageLabel" destination="8eZ-hB-dVb" id="tco-6n-OSn"/>
                         <outlet property="passwordTextField" destination="IfO-nk-9QC" id="cdE-zE-f7i"/>
                         <outlet property="signUpButton" destination="vQo-yN-GWu" id="uer-96-2pz"/>
+                        <outlet property="usernameTextField" destination="yKB-YQ-a7r" id="JO0-3o-tuf"/>
                         <segue destination="iNH-9U-hau" kind="presentation" identifier="SignedUp" id="65a-2G-v0D"/>
                     </connections>
                 </viewController>
@@ -277,6 +289,6 @@
         <image name="HelpingHandFilled.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="epz-4L-a5R"/>
+        <segue reference="65a-2G-v0D"/>
     </inferredMetricsTieBreakers>
 </document>

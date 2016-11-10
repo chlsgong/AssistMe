@@ -26,8 +26,10 @@ class MainTabBarController: UITabBarController {
     func setupTabControllers() {
         let segmentedVC = Utility.storyboard(forId: Identifier.communication).instantiateViewController(withIdentifier: Identifier.commNav) as! UINavigationController
         let profileVC = Utility.storyboard(forId: Identifier.profile).instantiateViewController(withIdentifier: Identifier.profileNav) as! UINavigationController
-        
-        self.viewControllers = [segmentedVC, profileVC]
+        let jobListingVC = Utility.storyboard(forId: Identifier.jobListing).instantiateViewController(withIdentifier: Identifier.jobListingNav) as! UINavigationController
+        let createListingVC = Utility.storyboard(forId: Identifier.createListing).instantiateViewController(withIdentifier: Identifier.createListingNav) as! UINavigationController
+
+        self.viewControllers = [segmentedVC, profileVC, jobListingVC, createListingVC]
     }
     
     func setupTabBar() {

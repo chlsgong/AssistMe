@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class SignUpViewController: UIViewController {
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -39,6 +40,7 @@ class SignUpViewController: UIViewController {
         // disable sign up button
         signUpButton.isEnabled = false
         
+        let username = usernameTextField.text!
         let email = emailTextField.text!
         let password = passwordTextField.text!
         let confirmPassword = confirmPasswordTextField.text!
@@ -46,7 +48,18 @@ class SignUpViewController: UIViewController {
         if Utility.validEmail(email: email) && password == confirmPassword {
             fbMgr.signUp(email: email, password: password) { error in
                 if error == nil {
-                    self.performSegue(withIdentifier: Identifier.signedUp, sender: nil)
+                    let usernameRequest = self.fbMgr.currentUser?.profileChangeRequest()
+                    usernameRequest?.displayName = username
+                    usernameRequest?.commitChanges { error in
+                        if error == nil {
+                            self.performSegue(withIdentifier: Identifier.signedUp, sender: nil)
+                        }
+                        else {
+                            self.errorMessageLabel.text = error?.localizedDescription
+                            self.errorMessageLabel.isHidden = false
+                            self.signUpButton.isEnabled = true
+                        }
+                    }
                 }
                 else {
                     self.errorMessageLabel.text = error?.localizedDescription
