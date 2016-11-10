@@ -32,14 +32,21 @@ class FirebaseManager {
     private let description = "description"
     private let jobTitle = "jobTitle"
     private let uid = "uid"
+    private let skillsListing = "skills-listing"
+    private let skillOne = "skillOne"
+    private let skillTwo = "skillTwo"
+    private let skillThree = "skillThree"
+    private let skillFour = "skillFour"
     
     private let rootNodeRef = FIRDatabase.database().reference()
     private let profileNodeRef: FIRDatabaseReference
     private let jobListingNodeRef: FIRDatabaseReference
+    private let skillsListingNodeRef: FIRDatabaseReference
     
     private init() {
         profileNodeRef = rootNodeRef.child(profile)
         jobListingNodeRef = rootNodeRef.child(jobListing)
+        skillsListingNodeRef = rootNodeRef.child(skillsListing)
     }
     
     // MARK: - Authentication functions
@@ -159,7 +166,7 @@ class FirebaseManager {
         newJobListingRef.setValue(jobListing)
     }
     
-    func queryJobListings(completion: @escaping (Job) -> Void) {
+    func queryJobListings(jobHandler: @escaping (Job) -> Void) {
         query(forNodeRef: jobListingNodeRef, observationType: .childAdded) { snapshot in
             let properties = snapshot.value as! NSDictionary
             let date = properties[self.date] as! String
@@ -178,7 +185,55 @@ class FirebaseManager {
                 let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
                 let job = Job(displayName: displayName, date: date, description: description, title: jobTitle, rating: userRating)
                 
-                completion(job)
+                jobHandler(job)
+            }
+        }
+    }
+    
+    func queryJobListings(forUID uid: String, jobHandler: @escaping (Job) -> Void) {
+        query(forNodeRef: jobListingNodeRef, forUID: uid) { snapshot in
+            let properties = snapshot.value as! NSDictionary
+            let description = properties[self.description] as! String
+            let jobTitle = properties[self.jobTitle] as! String
+            let date = properties[self.date] as! String
+            
+            self.query(forUID: uid) { snapshot in
+                let profile = snapshot.value as! NSDictionary
+                let displayName = profile[self.displayName] as! String
+                let rating = profile[self.rating] as! NSDictionary
+                let averageRating = rating[self.averageRating] as! String
+                let teamworkRating = rating[self.teamworkRating] as! String
+                let skillRating = rating[self.skillRating] as! String
+                
+                let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
+                let job = Job(displayName: displayName, date: date, description: description, title: jobTitle, rating: userRating)
+                
+                jobHandler(job)
+            }
+        }
+    }
+    
+    func querySkillsListings(forUID uid: String, skillHandler: @escaping (Skill) -> Void) {
+        query(forNodeRef: skillsListingNodeRef, forUID: uid) { snapshot in
+            let properties = snapshot.value as! NSDictionary
+            let skillOne = properties[self.skillOne] as! String
+            let skillTwo = properties[self.skillTwo] as! String
+            let skillThree = properties[self.skillThree] as! String
+            let skillFour = properties[self.skillFour] as! String
+            let date = properties[self.date] as! String
+            
+            self.query(forUID: uid) { snapshot in
+                let profile = snapshot.value as! NSDictionary
+                let displayName = profile[self.displayName] as! String
+                let rating = profile[self.rating] as! NSDictionary
+                let averageRating = rating[self.averageRating] as! String
+                let teamworkRating = rating[self.teamworkRating] as! String
+                let skillRating = rating[self.skillRating] as! String
+                
+                let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
+                let skill = Skill(displayName: displayName, skillOne: skillOne, skillTwo: skillTwo, skillThree: skillThree, skillFour: skillFour, date: date, rating: userRating)
+                
+                skillHandler(skill)
             }
         }
     }
@@ -219,6 +274,13 @@ class FirebaseManager {
     private func query(forUID uid: String, snapshotHandler: @escaping (FIRDataSnapshot) -> Void) {
         let query = profileNodeRef.queryEqual(toValue: nil, childKey:  uid)
         query.observeSingleEvent(of: .childAdded) { snapshot in
+            snapshotHandler(snapshot)
+        }
+    }
+    
+    private func query(forNodeRef nodeRef: FIRDatabaseReference, forUID uid: String, snapshotHandler: @escaping (FIRDataSnapshot) -> Void) {
+        let query = nodeRef.queryOrdered(byChild: self.uid).queryEqual(toValue: uid)
+        query.observe(.childAdded) { snapshot in
             snapshotHandler(snapshot)
         }
     }
