@@ -45,32 +45,39 @@ class SignUpViewController: UIViewController {
         let password = passwordTextField.text!
         let confirmPassword = confirmPasswordTextField.text!
         
-        if Utility.validEmail(email: email) && password == confirmPassword {
-            fbMgr.signUp(email: email, password: password) { error in
-                if error == nil {
-                    let usernameRequest = self.fbMgr.currentUser!.profileChangeRequest()
-                    usernameRequest.displayName = username
-                    usernameRequest.commitChanges { error in
-                        if error == nil {
-                            self.fbMgr.addUser(byUid: self.fbMgr.currentUser!.uid, displayName: self.fbMgr.currentUser!.displayName!)
-                            self.performSegue(withIdentifier: Identifier.signedUp, sender: nil)
-                        }
-                        else {
-                            self.errorMessageLabel.text = error?.localizedDescription
-                            self.errorMessageLabel.isHidden = false
-                            self.signUpButton.isEnabled = true
+        if !(username.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty) {
+            if Utility.validEmail(email: email) && password == confirmPassword {
+                fbMgr.signUp(email: email, password: password) { error in
+                    if error == nil {
+                        let usernameRequest = self.fbMgr.currentUser!.profileChangeRequest()
+                        usernameRequest.displayName = username
+                        usernameRequest.commitChanges { error in
+                            if error == nil {
+                                self.fbMgr.addUser(byUid: self.fbMgr.currentUser!.uid, displayName: self.fbMgr.currentUser!.displayName!)
+                                self.performSegue(withIdentifier: Identifier.signedUp, sender: nil)
+                            }
+                            else {
+                                self.errorMessageLabel.text = error?.localizedDescription
+                                self.errorMessageLabel.isHidden = false
+                                self.signUpButton.isEnabled = true
+                            }
                         }
                     }
+                    else {
+                        self.errorMessageLabel.text = error?.localizedDescription
+                        self.errorMessageLabel.isHidden = false
+                        self.signUpButton.isEnabled = true
+                    }
                 }
-                else {
-                    self.errorMessageLabel.text = error?.localizedDescription
-                    self.errorMessageLabel.isHidden = false
-                    self.signUpButton.isEnabled = true
-                }
+            }
+            else {
+                self.errorMessageLabel.text = "\(ErrorMessage.invalidEmail) or \(ErrorMessage.confirmPassword)"
+                self.errorMessageLabel.isHidden = false
+                self.signUpButton.isEnabled = true
             }
         }
         else {
-            self.errorMessageLabel.text = "\(ErrorMessage.invalidEmail) or \(ErrorMessage.confirmPassword)"
+            self.errorMessageLabel.text = "\(ErrorMessage.emptyField)"
             self.errorMessageLabel.isHidden = false
             self.signUpButton.isEnabled = true
         }

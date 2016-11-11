@@ -25,6 +25,10 @@
 		D14236451DD2A265003626AE /* JobListingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14236441DD2A265003626AE /* JobListingTableViewController.swift */; };
 		D14236471DD2A27A003626AE /* JobListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14236461DD2A27A003626AE /* JobListingTableViewCell.swift */; };
 		D14236491DD2A3F6003626AE /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14236481DD2A3F6003626AE /* Job.swift */; };
+		D14368071DD543830095FCAA /* SkillListing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D14368031DD543830095FCAA /* SkillListing.storyboard */; };
+		D14368081DD543830095FCAA /* SkillListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14368041DD543830095FCAA /* SkillListingTableViewCell.swift */; };
+		D14368091DD543830095FCAA /* SkillListingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14368051DD543830095FCAA /* SkillListingTableViewController.swift */; };
+		D143680A1DD543830095FCAA /* SkillListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14368061DD543830095FCAA /* SkillListingViewController.swift */; };
 		D151D4DC1DB863970004B1F8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D4DB1DB863970004B1F8 /* Message.swift */; };
 		D17DC05A1DC01B0A00F0423C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DC0591DC01B0A00F0423C /* MainTabBarController.swift */; };
 		D19595C51DC0767D0066F9AA /* HelpingHandFilled.png in Resources */ = {isa = PBXBuildFile; fileRef = D19595C41DC0767D0066F9AA /* HelpingHandFilled.png */; };
@@ -65,6 +69,10 @@
 		D14236441DD2A265003626AE /* JobListingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobListingTableViewController.swift; sourceTree = "<group>"; };
 		D14236461DD2A27A003626AE /* JobListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobListingTableViewCell.swift; sourceTree = "<group>"; };
 		D14236481DD2A3F6003626AE /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		D14368031DD543830095FCAA /* SkillListing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SkillListing.storyboard; sourceTree = "<group>"; };
+		D14368041DD543830095FCAA /* SkillListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillListingTableViewCell.swift; sourceTree = "<group>"; };
+		D14368051DD543830095FCAA /* SkillListingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillListingTableViewController.swift; sourceTree = "<group>"; };
+		D14368061DD543830095FCAA /* SkillListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillListingViewController.swift; sourceTree = "<group>"; };
 		D151D4DB1DB863970004B1F8 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D17DC0591DC01B0A00F0423C /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D19595C41DC0767D0066F9AA /* HelpingHandFilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HelpingHandFilled.png; path = Resources/HelpingHandFilled.png; sourceTree = "<group>"; };
@@ -159,10 +167,14 @@
 				D14236441DD2A265003626AE /* JobListingTableViewController.swift */,
 				D14236461DD2A27A003626AE /* JobListingTableViewCell.swift */,
 				D11AAFF21DD3B8AA005E6044 /* JobListingViewController.swift */,
+				D14368051DD543830095FCAA /* SkillListingTableViewController.swift */,
+				D14368041DD543830095FCAA /* SkillListingTableViewCell.swift */,
+				D14368061DD543830095FCAA /* SkillListingViewController.swift */,
 				D11AAFFA1DD3D4B5005E6044 /* CreateListingViewController.swift */,
 				D1C813F31DACB18B00775451 /* Main.storyboard */,
 				D13EF9B71DB5CA52009868C8 /* Communication.storyboard */,
 				D14236421DD291D8003626AE /* JobListing.storyboard */,
+				D14368031DD543830095FCAA /* SkillListing.storyboard */,
 				D11AAFF61DD3C013005E6044 /* CreateListing.storyboard */,
 				D114D1001DC2F4D5004FC7FA /* Profile.storyboard */,
 				D1C813F61DACB18B00775451 /* Assets.xcassets */,
@@ -258,6 +270,7 @@
 				D1C814061DACD08400775451 /* GoogleService-Info.plist in Resources */,
 				D114D1021DC2F4D5004FC7FA /* Profile.storyboard in Resources */,
 				D1C813F71DACB18B00775451 /* Assets.xcassets in Resources */,
+				D14368071DD543830095FCAA /* SkillListing.storyboard in Resources */,
 				D11AAFF71DD3C013005E6044 /* CreateListing.storyboard in Resources */,
 				D1C813F51DACB18B00775451 /* Main.storyboard in Resources */,
 				D19595C81DC07E6E0066F9AA /* CircledLeft.png in Resources */,
@@ -328,6 +341,7 @@
 				D14236471DD2A27A003626AE /* JobListingTableViewCell.swift in Sources */,
 				D1B3DBDF1DB302AD00ECE0A2 /* NotificationTableViewController.swift in Sources */,
 				D1C813F21DACB18B00775451 /* SignUpViewController.swift in Sources */,
+				D14368091DD543830095FCAA /* SkillListingTableViewController.swift in Sources */,
 				D11AAFF31DD3B8AA005E6044 /* JobListingViewController.swift in Sources */,
 				D17DC05A1DC01B0A00F0423C /* MainTabBarController.swift in Sources */,
 				D1ACD5AF1DB2E83E00D11E22 /* ChatViewController.swift in Sources */,
@@ -337,7 +351,9 @@
 				D1C813F01DACB18B00775451 /* AppDelegate.swift in Sources */,
 				D1A8A8B11DB6925E001CF70D /* FirebaseManager.swift in Sources */,
 				D11AAFFB1DD3D4B5005E6044 /* CreateListingViewController.swift in Sources */,
+				D143680A1DD543830095FCAA /* SkillListingViewController.swift in Sources */,
 				D11AAFF51DD3BB81005E6044 /* Rating.swift in Sources */,
+				D14368081DD543830095FCAA /* SkillListingTableViewCell.swift in Sources */,
 				D1B3DBE11DB3034B00ECE0A2 /* MessageTableViewController.swift in Sources */,
 				D1B3DBDD1DB3029400ECE0A2 /* SegmentedViewController.swift in Sources */,
 				D114D0FE1DC2F4BC004FC7FA /* ProfileViewController.swift in Sources */,

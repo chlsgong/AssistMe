@@ -213,7 +213,7 @@
             <objects>
                 <navigationController storyboardIdentifier="JobListingNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q9d-fU-N76" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="qGD-cc-wQ4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qGD-cc-wQ4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>

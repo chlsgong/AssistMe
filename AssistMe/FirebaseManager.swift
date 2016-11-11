@@ -243,6 +243,32 @@ class FirebaseManager {
         newSkillsListing.setValue(skillsListing)
     }
     
+    func querySkillListings(completion: @escaping (Skill) -> Void) {
+        query(forNodeRef: skillsListingNodeRef, observationType: .childAdded) { snapshot in
+            let properties = snapshot.value as! NSDictionary
+            let date = properties[self.date] as! String
+            let skillOne = properties["skillOne"] as! String
+            let skillTwo = properties["skillTwo"] as! String
+            let skillThree = properties["skillThree"] as! String
+            let skillFour = properties["skillFour"] as! String
+            let uid = properties["uid"] as! String
+            
+            self.query(forUID: uid) { snapshot in
+                let profile = snapshot.value as! NSDictionary
+                let displayName = profile[self.displayName] as! String
+                let rating = profile[self.rating] as! NSDictionary
+                let averageRating = rating[self.averageRating] as! String
+                let teamworkRating = rating[self.teamworkRating] as! String
+                let skillRating = rating[self.skillRating] as! String
+                
+                let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
+                let skill = Skill(uid: uid, displayName: displayName, skillOne: skillOne, skillTwo: skillTwo, skillThree: skillThree, skillFour: skillFour, date: date, rating: userRating)
+                
+                completion(skill)
+            }
+        }
+    }
+    
     func querySkillsListings(forUID uid: String, skillHandler: @escaping (Skill) -> Void) {
         query(forNodeRef: skillsListingNodeRef, forUID: uid) { snapshot in
             let properties = snapshot.value as! NSDictionary
@@ -261,7 +287,7 @@ class FirebaseManager {
                 let skillRating = rating[self.skillRating] as! String
                 
                 let userRating = Rating(average: averageRating, teamwork: teamworkRating, skill: skillRating)
-                let skill = Skill(displayName: displayName, skillOne: skillOne, skillTwo: skillTwo, skillThree: skillThree, skillFour: skillFour, date: date, rating: userRating)
+                let skill = Skill(uid: uid, displayName: displayName, skillOne: skillOne, skillTwo: skillTwo, skillThree: skillThree, skillFour: skillFour, date: date, rating: userRating)
                 
                 skillHandler(skill)
             }

@@ -9,6 +9,7 @@
 import Foundation
 
 class Skill {
+    var uid: String
     var displayName: String
     var skillOne: String
     var skillTwo: String
@@ -17,7 +18,8 @@ class Skill {
     var date: String
     var rating: Rating
     
-    init(displayName: String, skillOne: String, skillTwo: String, skillThree: String, skillFour: String, date: String, rating: Rating) {
+    init(uid: String, displayName: String, skillOne: String, skillTwo: String, skillThree: String, skillFour: String, date: String, rating: Rating) {
+        self.uid = uid
         self.displayName = displayName
         self.skillOne = skillOne
         self.skillTwo = skillTwo

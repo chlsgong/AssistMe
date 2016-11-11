@@ -16,10 +16,10 @@ class JobListingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        queryJobs()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        queryJobs()
     }
 
     override func didReceiveMemoryWarning() {

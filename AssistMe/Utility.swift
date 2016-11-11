@@ -28,6 +28,7 @@ struct Identifier {
     static let communication = "Communication"
     static let profile = "Profile"
     static let jobListing = "JobListing"
+    static let skillListing = "SkillListing"
     static let createListing = "CreateListing"
     
     // View Controllers
@@ -39,6 +40,7 @@ struct Identifier {
     static let chat = "Chat"
     static let profileNav = "ProfileNav"
     static let jobListingNav = "JobListingNav"
+    static let skillListingNav = "SkillListingNav"
     static let createListingNav = "CreateListingNav"
     
     // TableView Cells
@@ -63,6 +65,7 @@ struct Asset {
 struct ErrorMessage {
     static let invalidEmail = "Invalid characters in email address."
     static let confirmPassword = "Passwords do not match."
+    static let emptyField = "Please fill out all of the fields."
 }
 
 // MARK: - Extensions

@@ -48,7 +48,7 @@ class JobListingViewController: UIViewController {
         teamworkRatingLabel.text = teamworkRating
         skillRatingLabel.text = skillRating
         
-        if uid == fbMgr.currentUser?.uid {
+        if uid == fbMgr.currentUser!.uid {
             messageButton.isHidden = true
         }
     }
