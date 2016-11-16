@@ -16,6 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="WVv-Wo-Qeg">
+                            <rect key="frame" x="0.0" y="212" width="375" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="skillListingCell" id="xuS-q5-hWm" customClass="SkillListingTableViewCell" customModule="AssistMe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="184"/>
@@ -56,19 +61,19 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQE-ZY-FmB">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="skill two" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATO-lA-6tq">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQE-ZY-FmB">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Y7x-16-ScG" firstAttribute="top" secondItem="rfn-Eu-FHY" secondAttribute="top" constant="8" id="07D-Jd-jDK"/>
+                                        <constraint firstItem="Y7x-16-ScG" firstAttribute="top" secondItem="rfn-Eu-FHY" secondAttribute="topMargin" constant="8" id="4kD-hd-a1H"/>
                                         <constraint firstItem="eVv-CE-JLT" firstAttribute="centerX" secondItem="rfn-Eu-FHY" secondAttribute="centerX" id="5Nc-7c-71P"/>
                                         <constraint firstItem="zag-I3-TjI" firstAttribute="centerX" secondItem="rfn-Eu-FHY" secondAttribute="centerX" id="GQs-TT-L72"/>
                                         <constraint firstItem="ATO-lA-6tq" firstAttribute="top" secondItem="eVv-CE-JLT" secondAttribute="bottom" constant="5" id="GaH-jx-8nc"/>
@@ -77,13 +82,13 @@
                                         <constraint firstItem="r6E-NS-rzn" firstAttribute="centerX" secondItem="rfn-Eu-FHY" secondAttribute="centerX" id="VAJ-Qf-nGw"/>
                                         <constraint firstItem="nQE-ZY-FmB" firstAttribute="centerX" secondItem="rfn-Eu-FHY" secondAttribute="centerX" id="We0-DK-VJG"/>
                                         <constraint firstItem="zag-I3-TjI" firstAttribute="top" secondItem="ATO-lA-6tq" secondAttribute="bottom" constant="5" id="Yc9-bm-9uv"/>
-                                        <constraint firstItem="Qd4-5K-H9l" firstAttribute="top" secondItem="rfn-Eu-FHY" secondAttribute="top" constant="8" id="ZiJ-gM-t5Y"/>
-                                        <constraint firstItem="nQE-ZY-FmB" firstAttribute="top" secondItem="rfn-Eu-FHY" secondAttribute="topMargin" constant="40" id="g65-l1-Fgt"/>
+                                        <constraint firstItem="nQE-ZY-FmB" firstAttribute="top" secondItem="rfn-Eu-FHY" secondAttribute="topMargin" constant="43" id="g65-l1-Fgt"/>
                                         <constraint firstItem="Y7x-16-ScG" firstAttribute="leading" secondItem="rfn-Eu-FHY" secondAttribute="leading" constant="8" id="qXh-22-DuX"/>
                                         <constraint firstItem="r6E-NS-rzn" firstAttribute="top" secondItem="zag-I3-TjI" secondAttribute="bottom" constant="5" id="qie-hK-ho3"/>
+                                        <constraint firstItem="jEU-mS-BhN" firstAttribute="top" secondItem="Y7x-16-ScG" secondAttribute="top" id="sC0-Ab-VXm"/>
+                                        <constraint firstItem="Qd4-5K-H9l" firstAttribute="top" secondItem="Y7x-16-ScG" secondAttribute="top" id="wS9-ws-S71"/>
                                         <constraint firstItem="jEU-mS-BhN" firstAttribute="leading" secondItem="Y7x-16-ScG" secondAttribute="trailing" constant="8" id="wph-Gl-QwJ"/>
                                         <constraint firstAttribute="trailing" secondItem="Qd4-5K-H9l" secondAttribute="trailing" constant="8" id="xD9-lo-9zB"/>
-                                        <constraint firstItem="jEU-mS-BhN" firstAttribute="centerY" secondItem="Y7x-16-ScG" secondAttribute="centerY" id="yMC-z9-gNA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -236,7 +241,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SkillListingNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="reu-hs-GVA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="jyu-Nz-ahG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jyu-Nz-ahG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>

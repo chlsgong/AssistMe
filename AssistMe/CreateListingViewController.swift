@@ -25,6 +25,7 @@ class CreateListingViewController: UIViewController, UITextFieldDelegate, UIText
     var confirmPostAlert: UIAlertController!
     
     let fbMgr = FirebaseManager.manager
+    var shouldEmptyTextView = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,15 @@ class CreateListingViewController: UIViewController, UITextFieldDelegate, UIText
         return false
     }
     
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if shouldEmptyTextView {
+            textView.text = ""
+            shouldEmptyTextView = false
+        }
+        
+        return true
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             view.endEditing(true)
@@ -65,6 +75,9 @@ class CreateListingViewController: UIViewController, UITextFieldDelegate, UIText
         
         jobTitleTextField.delegate = self
         jobDescriptionTextView.delegate = self
+        jobDescriptionTextView.layer.borderColor = UIColor.darkBlueColor().cgColor
+        jobDescriptionTextView.layer.borderWidth = 0.5
+        jobDescriptionTextView.layer.cornerRadius = 3.5
         
         skillOneTextField.delegate = self
         skillTwoTextField.delegate = self

@@ -29,11 +29,6 @@
                                     <frame key="frameInset" width="375" height="183"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQ0-PY-aBR">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MV-Rr-LcL">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -61,17 +56,21 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="73" id="SCJ-9B-gcm"/>
                                             </constraints>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQ0-PY-aBR">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="USR-eF-Ang" firstAttribute="top" secondItem="1Mz-n9-rOX" secondAttribute="bottom" constant="8" id="1v2-qT-FOq"/>
                                         <constraint firstItem="q9s-fv-1gW" firstAttribute="leading" secondItem="Rcx-r0-Zeg" secondAttribute="leadingMargin" id="1xZ-Zd-Ehx"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="1Mz-n9-rOX" secondAttribute="trailing" id="3gp-WH-aRZ"/>
                                         <constraint firstItem="8MV-Rr-LcL" firstAttribute="top" secondItem="Rcx-r0-Zeg" secondAttribute="topMargin" constant="8" id="53t-Kn-TLv"/>
-                                        <constraint firstItem="CQ0-PY-aBR" firstAttribute="top" secondItem="Rcx-r0-Zeg" secondAttribute="topMargin" constant="37" id="9R9-q1-VPN"/>
                                         <constraint firstItem="1Mz-n9-rOX" firstAttribute="top" secondItem="q9s-fv-1gW" secondAttribute="bottom" constant="8" id="F8f-ev-KZO"/>
                                         <constraint firstItem="OXf-Tr-KVM" firstAttribute="top" secondItem="Rcx-r0-Zeg" secondAttribute="topMargin" constant="8" id="Gkb-Rs-lpi"/>
                                         <constraint firstItem="OXf-Tr-KVM" firstAttribute="trailing" secondItem="Rcx-r0-Zeg" secondAttribute="trailingMargin" id="Irt-xv-mVq"/>
@@ -80,6 +79,7 @@
                                         <constraint firstItem="8MV-Rr-LcL" firstAttribute="leading" secondItem="q9s-fv-1gW" secondAttribute="trailing" constant="8" id="dzg-b6-eNI"/>
                                         <constraint firstItem="CQ0-PY-aBR" firstAttribute="centerX" secondItem="Rcx-r0-Zeg" secondAttribute="centerX" id="gpq-cN-L7Q"/>
                                         <constraint firstItem="USR-eF-Ang" firstAttribute="centerX" secondItem="Rcx-r0-Zeg" secondAttribute="centerX" id="sFN-6I-Wze"/>
+                                        <constraint firstItem="CQ0-PY-aBR" firstAttribute="top" secondItem="Rcx-r0-Zeg" secondAttribute="topMargin" constant="43" id="uoW-rP-PC9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

@@ -97,7 +97,7 @@ extension Date {
     }
     func toStringFromDefaultDate() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         return dateFormatter.string(from: self)
     }
 }

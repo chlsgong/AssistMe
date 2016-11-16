@@ -135,8 +135,12 @@ class FirebaseManager {
         query(forNodeRef: messageNodeRef(uid: currentUser!.uid), observationType: .childAdded) { snapshot in
             let properties = snapshot.value as! NSDictionary
             let uid = snapshot.key
-            let displayName = properties[self.displayName] as! String
-            let lastTextDate = properties[self.lastTextDate] as! String
+            guard let displayName = properties[self.displayName] as? String else {
+                return
+            }
+            guard let lastTextDate = properties[self.lastTextDate] as? String else {
+                return
+            }
             let message = Message(uid: uid, displayName: displayName, date: lastTextDate)
             
             completion(message)
