@@ -1,4 +1,7 @@
 PODS:
+  - Alamofire (4.1.0)
+  - AlamofireImage (3.1.0):
+    - Alamofire (~> 4.0)
   - Firebase/Auth (3.9.0):
     - Firebase/Core
     - FirebaseAuth (= 3.0.6)
@@ -57,6 +60,7 @@ PODS:
   - JSQSystemSoundPlayer (2.0.1)
 
 DEPENDENCIES:
+  - AlamofireImage (~> 3.1)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -65,6 +69,8 @@ DEPENDENCIES:
   - JSQMessagesViewController
 
 SPEC CHECKSUMS:
+  Alamofire: e266cf991b933498df791e645e0d8ac294492153
+  AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
   Firebase: ff77ffb77b317c3720fef57a60e9335cebf962e6
   FirebaseAnalytics: 6e58fc9b397664369ac7617fb0ba93fab6ba7b5b
   FirebaseAuth: 96e9674ff31d6e1f826d53e26aa003a57cab0295
@@ -80,6 +86,6 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
 
-PODFILE CHECKSUM: 1b66d3343b40017768862cc512c03dabce71fd44
+PODFILE CHECKSUM: 175a7e8f10dc3d7f3dae7716b6c3100b19a1d877
 
 COCOAPODS: 1.1.1

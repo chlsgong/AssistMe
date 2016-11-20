@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import AlamofireImage
 
 class ProfileViewController: UIViewController {
     
@@ -73,7 +74,12 @@ class ProfileViewController: UIViewController {
         }
         
         usernameLabel.text = user?.displayName
-        // profileImage.image = user?.photoURL
+        
+        if let url = user?.photoURL {
+            self.profileImage.af_setImage(withURL: url)
+        }
+        
+        //profileImage.image = user?.photoURL
     }
     
     fileprivate func reloadData() {

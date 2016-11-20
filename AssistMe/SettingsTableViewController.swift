@@ -58,25 +58,6 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func changeProfilePictureButton(sender: AnyObject) {
-        // Not sure how to go about getting images from anything other than a URL
-        showTextAlertController(withTitle: "Change Profile Picture", message: "", placeholderText: "Enter image url") {
-            let changeRequest = self.user?.profileChangeRequest()
-            
-            changeRequest?.photoURL = URL(string: self.loginTextField!.text!)
-            
-            changeRequest?.commitChanges { error in
-                if let _ = error {
-                    self.showErrorAlert(withMessage: "Unable to change profile picture")
-                } else {
-                    self.showSuccessAlert(withMessage: "Your profile picture has been changed.")
-                }
-            }
-
-        }
-        
-    }
-    
     @IBAction func changePasswordButton(sender: AnyObject) {
         let email = user?.email
         
@@ -224,6 +205,32 @@ class SettingsTableViewController: UITableViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    fileprivate func uploadProfilePicture(data: Data) {
+        // Create a reference to the file you want to upload
+        let profileRef = imagesRef.child("\(self.user!.uid).png")
+        
+        // Upload the file to the path "images/rivers.jpg"
+        profileRef.put(data, metadata: nil) { metadata, error in
+            if let _ = error {
+                //unable to upload
+            } else {
+                let downloadURL = metadata!.downloadURL()!
+                
+                let changeRequest = self.user?.profileChangeRequest()
+                
+                changeRequest?.photoURL = downloadURL
+                
+                changeRequest?.commitChanges { error in
+                    if let _ = error {
+                        self.showErrorAlert(withMessage: "Unable to change profile picture")
+                    } else {
+                        self.showSuccessAlert(withMessage: "Your profile picture has been changed.")
+                    }
+                }
+            }
+        }
+    }
 
 }
 
@@ -231,7 +238,9 @@ class SettingsTableViewController: UITableViewController {
 extension SettingsTableViewController: PhotoPickerViewControllerDelegate {
     func didSelectImage(with data: Data, in viewController: PhotoPickerViewController) {
         //Do data stuff
-        
         self.navigationController?.popViewController(animated: true)
+        //Maybe show loading here
+        
+        uploadProfilePicture(data: data)
     }
 }

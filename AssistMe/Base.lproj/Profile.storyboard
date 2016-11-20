@@ -14,7 +14,7 @@
         <scene sceneID="tt7-2g-ceM">
             <objects>
                 <tableViewController title="Settings" id="l2J-Nf-6HR" customClass="SettingsTableViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="26" sectionFooterHeight="28" id="ar6-CB-bB5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="50" sectionHeaderHeight="26" sectionFooterHeight="28" id="ar6-CB-bB5">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.23529411759999999" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
