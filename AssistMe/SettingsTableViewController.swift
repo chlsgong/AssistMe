@@ -12,15 +12,19 @@ import Firebase
 
 class SettingsTableViewController: UITableViewController {
     
-    //TODO: Needs functionality testing
-    
     var alertController:UIAlertController? = nil
     var loginTextField: UITextField? = nil
     var passwordTextField: UITextField? = nil
     
+    let imagesRef: FIRStorageReference = {
+        let storageRef = FIRStorage.storage().reference(forURL: "gs://assistme-e8c05.appspot.com")
+        return storageRef.child("images")
+    }()
+    
     let user = FIRAuth.auth()?.currentUser
     
     var ref = FIRDatabase.database().reference()
+    
     
     @IBAction func changeUsernameButton(sender: AnyObject) {
         let changeRequest = user?.profileChangeRequest()
@@ -270,5 +274,20 @@ class SettingsTableViewController: UITableViewController {
 //            }
 //        }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PhotoPickerSegue", let photoController = segue.destination as? PhotoPickerViewController {
+            photoController.delegate = self
+        }
+    }
 
+}
+
+
+extension SettingsTableViewController: PhotoPickerViewControllerDelegate {
+    func didSelectImage(with data: Data, in viewController: PhotoPickerViewController) {
+        //Do data stuff
+        
+        self.navigationController?.popViewController(animated: true)
+    }
 }
