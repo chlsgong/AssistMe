@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A4A6A8A41DE153E200111749 /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A8A31DE153E200111749 /* PhotoPickerViewController.swift */; };
 		A4A6A8A61DE159C800111749 /* PhotoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A8A51DE159C800111749 /* PhotoImageCell.swift */; };
+		A4A6A8A81DE172A000111749 /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A8A71DE172A000111749 /* EditInfoViewController.swift */; };
+		A4A6A8AA1DE173C200111749 /* UIAlertController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A8A91DE173C200111749 /* UIAlertController+Helpers.swift */; };
 		D10E50D41DBF16230076F3C9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E50D31DBF16230076F3C9 /* LoginViewController.swift */; };
 		D114D0FE1DC2F4BC004FC7FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114D0FC1DC2F4BC004FC7FA /* ProfileViewController.swift */; };
 		D114D0FF1DC2F4BC004FC7FA /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114D0FD1DC2F4BC004FC7FA /* SettingsTableViewController.swift */; };
@@ -54,6 +56,8 @@
 		7C3EA22F1E4DEF67B5A71080 /* Pods-AssistMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssistMe/Pods-AssistMe.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A6A8A31DE153E200111749 /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		A4A6A8A51DE159C800111749 /* PhotoImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoImageCell.swift; sourceTree = "<group>"; };
+		A4A6A8A71DE172A000111749 /* EditInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInfoViewController.swift; sourceTree = "<group>"; };
+		A4A6A8A91DE173C200111749 /* UIAlertController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Helpers.swift"; sourceTree = "<group>"; };
 		B56B5DECDBE22CD480D8DFF8 /* Pods_AssistMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssistMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10E50D31DBF16230076F3C9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D114D0FC1DC2F4BC004FC7FA /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				D1B3DBDE1DB302AD00ECE0A2 /* NotificationTableViewController.swift */,
 				D114D0FC1DC2F4BC004FC7FA /* ProfileViewController.swift */,
 				D114D0FD1DC2F4BC004FC7FA /* SettingsTableViewController.swift */,
+				A4A6A8A91DE173C200111749 /* UIAlertController+Helpers.swift */,
+				A4A6A8A71DE172A000111749 /* EditInfoViewController.swift */,
 				D14236441DD2A265003626AE /* JobListingTableViewController.swift */,
 				D14236461DD2A27A003626AE /* JobListingTableViewCell.swift */,
 				D11AAFF21DD3B8AA005E6044 /* JobListingViewController.swift */,
@@ -359,7 +365,9 @@
 				D1A8A8B11DB6925E001CF70D /* FirebaseManager.swift in Sources */,
 				D11AAFFB1DD3D4B5005E6044 /* CreateListingViewController.swift in Sources */,
 				D143680A1DD543830095FCAA /* SkillListingViewController.swift in Sources */,
+				A4A6A8A81DE172A000111749 /* EditInfoViewController.swift in Sources */,
 				D11AAFF51DD3BB81005E6044 /* Rating.swift in Sources */,
+				A4A6A8AA1DE173C200111749 /* UIAlertController+Helpers.swift in Sources */,
 				D14368081DD543830095FCAA /* SkillListingTableViewCell.swift in Sources */,
 				A4A6A8A61DE159C800111749 /* PhotoImageCell.swift in Sources */,
 				D1B3DBE11DB3034B00ECE0A2 /* MessageTableViewController.swift in Sources */,

@@ -46,7 +46,8 @@ class PhotoPickerViewController: UIViewController {
                     self.loadAssets()
                     self.collectionView.reloadData()
                 } else {
-                    //TODO: show error here
+                    let alert = UIAlertController.errorAlert(withMessage: "This application does not have access to your photos")
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }

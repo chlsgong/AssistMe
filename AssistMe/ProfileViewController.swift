@@ -18,12 +18,13 @@ class ProfileViewController: UIViewController {
     let user = FIRAuth.auth()?.currentUser
     
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var skillsLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var listingsTableView: UITableView!
     @IBOutlet weak var segmentedTableViewController: UISegmentedControl!
     @IBOutlet var settingsButton: UIBarButtonItem!
+    @IBOutlet weak var skillRatingLabel: UILabel!
+    @IBOutlet weak var teamworkRatingLabel: UILabel!
     
     var jobs: [Job] = []
     var skills: [Skill] = []
@@ -51,35 +52,39 @@ class ProfileViewController: UIViewController {
         }
 
         let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("profile").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
+        
+        ref.child("profile").child(userID!).child("rating").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let description = value?["description"] as? String ?? ""
-            let skills = value?["skills"] as? String ?? ""
+            let skillRating = value?["skillRating"] as? String ?? ""
+            let teamWorkRating = value?["teamworkRating"] as? String ?? ""
             
-            if description != "" {
-                self.descriptionLabel.text = description
-            } else {
-                self.descriptionLabel.text = ""
-            }
-            
-            if skills != "" {
-                self.skillsLabel.text = skills
-            } else {
-                self.skillsLabel.text = ""
-            }
-            
+            self.skillRatingLabel.text = skillRating
+            self.teamworkRatingLabel.text = teamWorkRating
         }) { (error) in
             print(error.localizedDescription)
         }
         
+        ref.child("profile").child(userID!).child("skills").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let skillsDictionary = snapshot.value as? [String : String] {
+                var stringSkill = ""
+                for (_, value) in skillsDictionary {
+                    stringSkill.append(value)
+                    stringSkill.append(", ")
+                }
+                stringSkill = stringSkill.substring(to: stringSkill.index(before: stringSkill.index(before: stringSkill.endIndex)))
+                self.skillsLabel.text = stringSkill
+            } else {
+                self.skillsLabel.text = ""
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+            
         usernameLabel.text = user?.displayName
         
         if let url = user?.photoURL {
             self.profileImage.af_setImage(withURL: url)
         }
-        
-        //profileImage.image = user?.photoURL
     }
     
     fileprivate func reloadData() {
