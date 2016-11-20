@@ -34,38 +34,6 @@ class ProfileViewController: UIViewController {
         reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-//        // Not sure if this works; Supposed to make the settings button look like a little gear thing
-//        self.settingsButton.title = NSString(string: "\u{2699}") as String
-//        if let font = UIFont(name: "Helvetica", size: 18.0) {
-//            self.settingsButton.setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState.normal)
-//        }
-//        
-//        ref = FIRDatabase.database().reference()
-//        
-//        let userID = user?.uid
-//        
-//        ref.observeSingleEvent(of: .value, with: { snapshot in
-//            if !snapshot.exists() { return }
-//            
-//            let properties = snapshot.value as! NSDictionary
-//            
-//            if let description = properties["description"] as? String {
-//                self.descriptionLabel.text = description
-//            }
-//            
-//            if let skills = properties["skills"] as? String {
-//                self.skillsLabel.text = skills
-//            }
-//            
-//        })
-//        
-//        usernameLabel.text = user?.displayName
-//        // profileImage.image = user?.photoURL
-    }
-    
     private func reloadInfo() {
         // Not sure if this works; Supposed to make the settings button look like a little gear thing
         self.settingsButton.title = NSString(string: "\u{2699}") as String
@@ -80,8 +48,7 @@ class ProfileViewController: UIViewController {
         } else {
             usernameLabel.text = ""
         }
-        
-        
+
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("profile").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -155,4 +122,9 @@ extension ProfileViewController: UITableViewDataSource {
         
         return cell
     }
+}
+
+
+extension ProfileViewController: UITableViewDelegate {
+    
 }
