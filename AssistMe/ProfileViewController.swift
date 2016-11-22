@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import AlamofireImage
 
 class ProfileViewController: UIViewController {
     
@@ -17,12 +18,13 @@ class ProfileViewController: UIViewController {
     let user = FIRAuth.auth()?.currentUser
     
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var skillsLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var listingsTableView: UITableView!
     @IBOutlet weak var segmentedTableViewController: UISegmentedControl!
     @IBOutlet var settingsButton: UIBarButtonItem!
+    @IBOutlet weak var skillRatingLabel: UILabel!
+    @IBOutlet weak var teamworkRatingLabel: UILabel!
     
     var jobs: [Job] = []
     var skills: [Skill] = []
@@ -37,33 +39,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        // Not sure if this works; Supposed to make the settings button look like a little gear thing
-//        self.settingsButton.title = NSString(string: "\u{2699}") as String
-//        if let font = UIFont(name: "Helvetica", size: 18.0) {
-//            self.settingsButton.setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState.normal)
-//        }
-//        
-//        ref = FIRDatabase.database().reference()
-//        
-//        let userID = user?.uid
-//        
-//        ref.observeSingleEvent(of: .value, with: { snapshot in
-//            if !snapshot.exists() { return }
-//            
-//            let properties = snapshot.value as! NSDictionary
-//            
-//            if let description = properties["description"] as? String {
-//                self.descriptionLabel.text = description
-//            }
-//            
-//            if let skills = properties["skills"] as? String {
-//                self.skillsLabel.text = skills
-//            }
-//            
-//        })
-//        
-//        usernameLabel.text = user?.displayName
-//        // profileImage.image = user?.photoURL
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     private func reloadInfo() {
@@ -81,32 +57,40 @@ class ProfileViewController: UIViewController {
             usernameLabel.text = ""
         }
         
-        
         let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("profile").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
+        
+        ref.child("profile").child(userID!).child("rating").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let description = value?["description"] as? String ?? ""
-            let skills = value?["skills"] as? String ?? ""
+            let skillRating = value?["skillRating"] as? String ?? ""
+            let teamWorkRating = value?["teamworkRating"] as? String ?? ""
             
-            if description != "" {
-                self.descriptionLabel.text = description
-            } else {
-                self.descriptionLabel.text = ""
-            }
-            
-            if skills != "" {
-                self.skillsLabel.text = skills
+            self.skillRatingLabel.text = skillRating
+            self.teamworkRatingLabel.text = teamWorkRating
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        ref.child("profile").child(userID!).child("skills").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let skillsDictionary = snapshot.value as? [String : String] {
+                var stringSkill = ""
+                for (_, value) in skillsDictionary {
+                    stringSkill.append(value)
+                    stringSkill.append(", ")
+                }
+                stringSkill = stringSkill.substring(to: stringSkill.index(before: stringSkill.index(before: stringSkill.endIndex)))
+                self.skillsLabel.text = stringSkill
             } else {
                 self.skillsLabel.text = ""
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
         
         usernameLabel.text = user?.displayName
-        // profileImage.image = user?.photoURL
+        
+        if let url = user?.photoURL {
+            self.profileImage.af_setImage(withURL: url)
+        }
     }
     
     fileprivate func reloadData() {
@@ -129,6 +113,12 @@ class ProfileViewController: UIViewController {
 
     @IBAction func listingTypeSegDidChange(_ sender: AnyObject) {
         reloadData()
+    }
+    
+    @IBAction func jobsButtonTapped(_ sender: AnyObject) {
+        let jobsSegmentedViewController = Utility.storyboard(forId: Identifier.currentJobs).instantiateViewController(withIdentifier: Identifier.jobsNav) as! UINavigationController
+        
+        self.present(jobsSegmentedViewController, animated: true, completion: nil)
     }
 }
 
@@ -154,5 +144,21 @@ extension ProfileViewController: UITableViewDataSource {
         
         
         return cell
+    }
+}
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if segmentedTableViewController.selectedSegmentIndex == 0 {
+            let jobListingVC = Utility.storyboard(forId: Identifier.jobListing).instantiateViewController(withIdentifier: Identifier.detailJobListing) as! JobListingViewController
+            jobListingVC.job = jobs[indexPath.row]
+            
+            self.navigationController?.pushViewController(jobListingVC, animated: true)
+        } else {
+            let skillListingVC = Utility.storyboard(forId: Identifier.skillListing).instantiateViewController(withIdentifier: Identifier.detailSkillListing) as! SkillListingViewController
+            skillListingVC.listing = skills[indexPath.row]
+            
+            self.navigationController?.pushViewController(skillListingVC, animated: true)
+        }
     }
 }

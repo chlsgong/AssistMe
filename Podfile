@@ -11,5 +11,7 @@ target 'AssistMe' do
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
   pod 'JSQMessagesViewController'
+  pod 'FirebaseStorage', '~> 1.0'
+  pod 'AlamofireImage', '~> 3.1'
 
 end

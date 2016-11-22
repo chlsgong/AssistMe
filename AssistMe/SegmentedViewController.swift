@@ -70,6 +70,7 @@ class SegmentedViewController: UIViewController {
     }
     
     @IBAction func logOutButtonTapped(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "ToStartUp", sender: nil)
         fbMgr.signOut()
     }
     

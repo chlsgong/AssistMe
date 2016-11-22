@@ -9,6 +9,7 @@
 import Foundation
 
 class Job {
+    let key: String
     let uid: String
     let displayName: String
     let date: String
@@ -16,7 +17,8 @@ class Job {
     let title: String
     let rating: Rating
     
-    init(uid: String, displayName: String, date: String, description: String, title: String, rating: Rating) {
+    init(key: String, uid: String, displayName: String, date: String, description: String, title: String, rating: Rating) {
+        self.key = key
         self.uid = uid
         self.displayName = displayName
         self.date = date

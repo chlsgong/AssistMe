@@ -56,7 +56,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="73" id="SCJ-9B-gcm"/>
                                             </constraints>
-                                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -107,7 +107,7 @@
         <!--Job Listing View Controller-->
         <scene sceneID="mW9-Fx-yOP">
             <objects>
-                <viewController id="7sy-i8-JgZ" customClass="JobListingViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailJobListing" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7sy-i8-JgZ" customClass="JobListingViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fBd-Rw-Xie"/>
                         <viewControllerLayoutGuide type="bottom" id="wSo-qU-jAg"/>
@@ -171,6 +171,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Qn-xw-bMR">
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Accept">
+                                    <color key="titleColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptButtonTapped:" destination="7sy-i8-JgZ" eventType="touchUpInside" id="7OG-RQ-rRb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-ec-vSS">
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Close Job">
+                                    <color key="titleColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeJobTapped:" destination="7sy-i8-JgZ" eventType="touchUpInside" id="pDZ-9w-53r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -184,10 +202,14 @@
                             <constraint firstItem="eJ6-id-Ksg" firstAttribute="top" secondItem="842-xI-2AJ" secondAttribute="bottom" constant="14" id="PFZ-P1-MLP"/>
                             <constraint firstItem="64R-ca-ZyD" firstAttribute="centerX" secondItem="KtJ-zg-PO6" secondAttribute="centerX" id="T6e-dE-nV3"/>
                             <constraint firstItem="eJ6-id-Ksg" firstAttribute="trailing" secondItem="842-xI-2AJ" secondAttribute="trailing" id="T8M-Yq-gcS"/>
+                            <constraint firstItem="QSX-ec-vSS" firstAttribute="top" secondItem="fbI-Dn-BLw" secondAttribute="bottom" constant="42" id="TYg-vG-nsk"/>
+                            <constraint firstItem="9Qn-xw-bMR" firstAttribute="centerX" secondItem="KtJ-zg-PO6" secondAttribute="centerX" id="WNE-77-WWs"/>
                             <constraint firstItem="VjM-tc-tiH" firstAttribute="leading" secondItem="KtJ-zg-PO6" secondAttribute="leadingMargin" id="aBx-Tj-e2R"/>
+                            <constraint firstItem="QSX-ec-vSS" firstAttribute="centerX" secondItem="KtJ-zg-PO6" secondAttribute="centerX" id="afr-wx-wDP"/>
                             <constraint firstItem="qmd-ar-57T" firstAttribute="top" secondItem="fBd-Rw-Xie" secondAttribute="bottom" constant="25" id="i4L-wo-WIZ"/>
                             <constraint firstItem="qmd-ar-57T" firstAttribute="trailing" secondItem="KtJ-zg-PO6" secondAttribute="trailingMargin" id="jiu-10-VNc"/>
                             <constraint firstItem="Bsb-u0-NbH" firstAttribute="trailing" secondItem="KtJ-zg-PO6" secondAttribute="trailingMargin" id="kQg-4U-QOJ"/>
+                            <constraint firstItem="9Qn-xw-bMR" firstAttribute="top" secondItem="fbI-Dn-BLw" secondAttribute="bottom" constant="42" id="lhT-vq-pVS"/>
                             <constraint firstItem="Bsb-u0-NbH" firstAttribute="leading" secondItem="KtJ-zg-PO6" secondAttribute="leadingMargin" id="mmb-r2-9DX"/>
                             <constraint firstItem="hBJ-Zi-yoQ" firstAttribute="leading" secondItem="842-xI-2AJ" secondAttribute="trailing" constant="8" id="rHj-Fs-jty"/>
                             <constraint firstItem="fbI-Dn-BLw" firstAttribute="top" secondItem="hBJ-Zi-yoQ" secondAttribute="bottom" constant="14" id="rKJ-su-Dkb"/>
@@ -196,6 +218,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="acceptButton" destination="9Qn-xw-bMR" id="JWz-V7-Hfg"/>
+                        <outlet property="closeJobButton" destination="QSX-ec-vSS" id="4oq-SB-xLk"/>
                         <outlet property="dateLabel" destination="qmd-ar-57T" id="zSY-hi-fXm"/>
                         <outlet property="descriptionTextView" destination="Bsb-u0-NbH" id="xAA-KA-bmd"/>
                         <outlet property="messageButton" destination="64R-ca-ZyD" id="DhH-8L-iBm"/>

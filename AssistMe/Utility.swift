@@ -30,6 +30,7 @@ struct Identifier {
     static let jobListing = "JobListing"
     static let skillListing = "SkillListing"
     static let createListing = "CreateListing"
+    static let currentJobs = "CurrentJobs"
     
     // View Controllers
     static let startUp = "StartUp"
@@ -40,12 +41,21 @@ struct Identifier {
     static let chat = "Chat"
     static let profileNav = "ProfileNav"
     static let jobListingNav = "JobListingNav"
+    static let detailJobListing = "DetailJobListing"
     static let skillListingNav = "SkillListingNav"
+    static let detailSkillListing = "DetailSkillListing"
     static let createListingNav = "CreateListingNav"
+    static let myJobListingsNav = "MyJobListingsNav"
+    static let jobsNav = "JobsNav"
+    static let myJobs = "MyJobs"
+    static let jobRequests = "JobRequests"
     
     // TableView Cells
     static let messageCell = "MessageCell"
     static let jobListingCell = "JobListingCell"
+    static let myJobListingsCell = "MyJobListingsCell"
+    static let jobRequestCell = "JobRequestCell"
+    static let myJobCell = "MyJobsCell"
     
     // Segues
     static let signedUp = "SignedUp"

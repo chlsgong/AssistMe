@@ -116,7 +116,7 @@
         <!--Skills-->
         <scene sceneID="xbp-dd-Wzp">
             <objects>
-                <viewController title="Skills" id="9D8-9X-6Qi" customClass="SkillListingViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailSkillListing" title="Skills" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9D8-9X-6Qi" customClass="SkillListingViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yws-dd-RMH"/>
                         <viewControllerLayoutGuide type="bottom" id="WEi-Ya-jxb"/>

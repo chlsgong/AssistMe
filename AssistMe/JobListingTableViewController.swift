@@ -40,13 +40,16 @@ class JobListingTableViewController: UITableViewController {
             let destination = segue.destination as! JobListingViewController
             let job = jobs[self.tableView.indexPath(for: cell)!.row]
             
-            destination.uid = job.uid
-            destination.jobTitle = job.title
-            destination.displayName = job.displayName
-            destination.jobDescription = job.description
-            destination.date = job.date
-            destination.teamworkRating = job.rating.teamwork
-            destination.skillRating = job.rating.skill
+            destination.job = job
+            destination.parentVC = "jobListing"
+            
+//            destination.uid = job.uid
+//            destination.jobTitle = job.title
+//            destination.displayName = job.displayName
+//            destination.jobDescription = job.description
+//            destination.date = job.date
+//            destination.teamworkRating = job.rating.teamwork
+//            destination.skillRating = job.rating.skill
         }
     }
 
