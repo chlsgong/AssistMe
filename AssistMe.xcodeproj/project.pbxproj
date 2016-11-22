@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E03EE221DE3CD45009E8C6F /* RatePartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03EE211DE3CD45009E8C6F /* RatePartnerViewController.swift */; };
+		0E03EE241DE3CDBA009E8C6F /* RatePartner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E03EE231DE3CDBA009E8C6F /* RatePartner.storyboard */; };
 		A4A6A8A41DE153E200111749 /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A8A31DE153E200111749 /* PhotoPickerViewController.swift */; };
 		A4A6A8A61DE159C800111749 /* PhotoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A8A51DE159C800111749 /* PhotoImageCell.swift */; };
 		A4A6A8A81DE172A000111749 /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A8A71DE172A000111749 /* EditInfoViewController.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E03EE211DE3CD45009E8C6F /* RatePartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatePartnerViewController.swift; sourceTree = "<group>"; };
+		0E03EE231DE3CDBA009E8C6F /* RatePartner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RatePartner.storyboard; sourceTree = "<group>"; };
 		7C3EA22F1E4DEF67B5A71080 /* Pods-AssistMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssistMe/Pods-AssistMe.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A6A8A31DE153E200111749 /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		A4A6A8A51DE159C800111749 /* PhotoImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoImageCell.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				D1C814041DACC57C00775451 /* AssistMe.entitlements */,
 				D114D1031DC30377004FC7FA /* ReadMe.txt */,
 				D19595C61DC076820066F9AA /* Resources */,
+				0E03EE211DE3CD45009E8C6F /* RatePartnerViewController.swift */,
+				0E03EE231DE3CDBA009E8C6F /* RatePartner.storyboard */,
 			);
 			path = AssistMe;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E03EE241DE3CDBA009E8C6F /* RatePartner.storyboard in Resources */,
 				D11AAFF11DD31217005E6044 /* SpeechBubble.png in Resources */,
 				D1C813FA1DACB18B00775451 /* LaunchScreen.storyboard in Resources */,
 				D1C814061DACD08400775451 /* GoogleService-Info.plist in Resources */,
@@ -351,6 +358,7 @@
 			files = (
 				D11AAFFD1DD409BE005E6044 /* Skill.swift in Sources */,
 				D14236471DD2A27A003626AE /* JobListingTableViewCell.swift in Sources */,
+				0E03EE221DE3CD45009E8C6F /* RatePartnerViewController.swift in Sources */,
 				D1B3DBDF1DB302AD00ECE0A2 /* NotificationTableViewController.swift in Sources */,
 				D1C813F21DACB18B00775451 /* SignUpViewController.swift in Sources */,
 				D14368091DD543830095FCAA /* SkillListingTableViewController.swift in Sources */,

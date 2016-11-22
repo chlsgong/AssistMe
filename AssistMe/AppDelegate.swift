@@ -19,16 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
 
         FirebaseManager.manager.addStateListener { user in
-            if user != nil {
-                let mainTabBarController = Utility.storyboard(forId: Identifier.main).instantiateViewController(withIdentifier: Identifier.mainTabs) as! MainTabBarController
-                
-                self.window?.rootViewController = mainTabBarController
-            }
-            else {
-                let startUp = Utility.storyboard(forId: Identifier.main).instantiateViewController(withIdentifier: Identifier.startUp)
-                
-                self.window?.rootViewController = startUp
-            }
+//            if user != nil {
+//                let mainTabBarController = Utility.storyboard(forId: Identifier.main).instantiateViewController(withIdentifier: Identifier.mainTabs) as! MainTabBarController
+//                
+//                self.window?.rootViewController = mainTabBarController
+//            }
+//            else {
+//                let startUp = Utility.storyboard(forId: Identifier.main).instantiateViewController(withIdentifier: Identifier.startUp)
+//                
+//                self.window?.rootViewController = startUp
+//            }
         }
  
         return true

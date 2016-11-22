@@ -174,6 +174,33 @@ class FirebaseManager {
         }
     }
     
+    func updateRatings(skills: Double, teamwork: Double, uid:String) {
+        let userRating = profileNodeRef.child("\(uid)/rating")
+        var skill: Double = 0;
+        var team: Double = 0;
+        var count: Double = 0;
+        
+        query(forNodeRef: userRating, observationType: .childAdded) { snapshot in
+                let properties = snapshot.value as! NSDictionary
+                skill = properties["skillRating"] as! Double
+                team = properties["teamworkRating"] as! Double
+                count = properties["ratingCount"] as! Double
+            }
+        count = count + 1
+        let newSkills: Double = (skill + skills)/count
+        let newTeam: Double = (team + teamwork)/count
+        
+        let rating = [
+            "averageRating" : (newSkills + newTeam)/2.0,
+            "skillRating" : newSkills,
+            "teamworkRating" : newTeam,
+            "ratingCount" : count
+        ]
+        
+        userRating.setValue(rating)
+    }
+    
+    
     func postJobListing(date: String, description: String, jobTitle: String) {
         let jobListing = [
             self.date : date,
