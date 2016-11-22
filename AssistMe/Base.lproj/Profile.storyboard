@@ -315,11 +315,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fck-Fj-bUY" id="kuH-RS-XGP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="juF-qA-UGT">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.095306523144245148" green="0.58113640546798706" blue="0.59947150945663452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -440,19 +440,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teamwork Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zda-fk-CzN">
-                                <rect key="frame" x="44" y="291.5" width="143.5" height="21"/>
+                                <rect key="frame" x="31" y="291.5" width="143.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0c-HK-tIb">
-                                <rect key="frame" x="44" y="256" width="94" height="21"/>
+                                <rect key="frame" x="31" y="256" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Listing of Skills&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnb-sf-M5A">
-                                <rect key="frame" x="44" y="220.5" width="321" height="20.5"/>
+                                <rect key="frame" x="31" y="220.5" width="329" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.095306523144245148" green="0.58113640546798706" blue="0.59947150945663452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -465,18 +465,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zdy-wH-wIb" id="Mqb-c4-S7U">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="csz-uj-smP">
-                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mja-g7-K8k">
-                                                    <rect key="frame" x="301" y="11" width="59" height="21"/>
+                                                    <rect key="frame" x="301" y="12" width="59" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -503,19 +503,19 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Skill Rating&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHE-04-A93">
-                                <rect key="frame" x="153" y="256" width="106" height="21"/>
+                                <rect key="frame" x="140" y="256" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.095306523144245148" green="0.58113640546798706" blue="0.59947150945663452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Teamwork Rating&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-s1-3Vf">
-                                <rect key="frame" x="202.5" y="292" width="153" height="21"/>
+                                <rect key="frame" x="189.5" y="292" width="153" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.095306523144245148" green="0.58113640546798706" blue="0.59947150945663452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcI-8b-vSQ">
-                                <rect key="frame" x="44" y="190" width="42.5" height="20.5"/>
+                                <rect key="frame" x="31" y="190" width="42.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.15686274510000001" green="0.29411764709999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -523,7 +523,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Cnb-sf-M5A" secondAttribute="trailing" constant="10" id="32b-xW-4aP"/>
+                            <constraint firstAttribute="trailing" secondItem="Cnb-sf-M5A" secondAttribute="trailing" constant="15" id="32b-xW-4aP"/>
                             <constraint firstItem="Zda-fk-CzN" firstAttribute="leading" secondItem="e0c-HK-tIb" secondAttribute="leading" id="3yt-ov-oXg"/>
                             <constraint firstItem="jcI-8b-vSQ" firstAttribute="top" secondItem="mkU-1J-vg1" secondAttribute="bottom" constant="15" id="M5x-U4-OCn"/>
                             <constraint firstAttribute="trailing" secondItem="wOP-5P-KGY" secondAttribute="trailing" id="TCO-VB-zM1"/>
@@ -533,7 +533,7 @@
                             <constraint firstItem="wOP-5P-KGY" firstAttribute="top" secondItem="Zda-fk-CzN" secondAttribute="bottom" constant="20" id="WVn-FL-DxI"/>
                             <constraint firstAttribute="trailing" secondItem="UeG-WV-yws" secondAttribute="trailing" id="cMl-Ah-IfG"/>
                             <constraint firstItem="KbO-CK-1l6" firstAttribute="top" secondItem="R6D-f7-tNe" secondAttribute="bottom" constant="30" id="ccF-ZP-zsn"/>
-                            <constraint firstItem="jcI-8b-vSQ" firstAttribute="leading" secondItem="xfI-tA-d2Z" secondAttribute="leadingMargin" constant="28" id="cs9-PF-m0A"/>
+                            <constraint firstItem="jcI-8b-vSQ" firstAttribute="leading" secondItem="xfI-tA-d2Z" secondAttribute="leadingMargin" constant="15" id="cs9-PF-m0A"/>
                             <constraint firstItem="5dc-s1-3Vf" firstAttribute="leading" secondItem="Zda-fk-CzN" secondAttribute="trailing" constant="15" id="g9y-e8-lTB"/>
                             <constraint firstItem="e0c-HK-tIb" firstAttribute="leading" secondItem="jcI-8b-vSQ" secondAttribute="leading" id="ixF-OC-5ut"/>
                             <constraint firstItem="Cnb-sf-M5A" firstAttribute="leading" secondItem="jcI-8b-vSQ" secondAttribute="leading" id="kBm-Og-QZj"/>

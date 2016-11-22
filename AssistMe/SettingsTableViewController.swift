@@ -40,7 +40,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func changeEmailButton(sender: AnyObject) {
-        
         let alert = UIAlertController.textAlertController(withTitle: "Change email", message: "Please enter a new email", placeholderText: "Email") { text in
             self.user?.updateEmail("\(text)") { error in
                 if let _ = error {
