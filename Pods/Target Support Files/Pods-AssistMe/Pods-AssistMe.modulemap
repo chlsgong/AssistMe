@@ -1,0 +1,6 @@
+framework module Pods_AssistMe {
+  umbrella header "Pods-AssistMe-umbrella.h"
+
+  export *
+  module * { export * }
+}

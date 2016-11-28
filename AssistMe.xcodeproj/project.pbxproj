@@ -60,10 +60,6 @@
 		D1C882311DE4075300E66205 /* MyJobsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C882301DE4075300E66205 /* MyJobsTableViewCell.swift */; };
 		D1C882331DE41C5F00E66205 /* InactiveState.png in Resources */ = {isa = PBXBuildFile; fileRef = D1C882321DE41C5F00E66205 /* InactiveState.png */; };
 		D1C882351DE41C6B00E66205 /* ActiveState.png in Resources */ = {isa = PBXBuildFile; fileRef = D1C882341DE41C6B00E66205 /* ActiveState.png */; };
-		D1C8823A1DE432B900E66205 /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C882361DE432B900E66205 /* EditInfoViewController.swift */; };
-		D1C8823B1DE432B900E66205 /* PhotoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C882371DE432B900E66205 /* PhotoImageCell.swift */; };
-		D1C8823C1DE432B900E66205 /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C882381DE432B900E66205 /* PhotoPickerViewController.swift */; };
-		D1C8823D1DE432B900E66205 /* UIAlertController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C882391DE432B900E66205 /* UIAlertController+Helpers.swift */; };
 		F9A1E4672245B7EE0B352357 /* Pods_AssistMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56B5DECDBE22CD480D8DFF8 /* Pods_AssistMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,10 +122,6 @@
 		D1C882301DE4075300E66205 /* MyJobsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJobsTableViewCell.swift; sourceTree = "<group>"; };
 		D1C882321DE41C5F00E66205 /* InactiveState.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InactiveState.png; sourceTree = "<group>"; };
 		D1C882341DE41C6B00E66205 /* ActiveState.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ActiveState.png; sourceTree = "<group>"; };
-		D1C882361DE432B900E66205 /* EditInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInfoViewController.swift; sourceTree = "<group>"; };
-		D1C882371DE432B900E66205 /* PhotoImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoImageCell.swift; sourceTree = "<group>"; };
-		D1C882381DE432B900E66205 /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
-		D1C882391DE432B900E66205 /* UIAlertController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Helpers.swift"; sourceTree = "<group>"; };
 		E6DAD249FEF786FA8341A4EB /* Pods-AssistMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-AssistMe/Pods-AssistMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -395,19 +387,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1C8823C1DE432B900E66205 /* PhotoPickerViewController.swift in Sources */,
 				D11AAFFD1DD409BE005E6044 /* Skill.swift in Sources */,
-				D1C8823D1DE432B900E66205 /* UIAlertController+Helpers.swift in Sources */,
 				D14236471DD2A27A003626AE /* JobListingTableViewCell.swift in Sources */,
 				D1B3DBDF1DB302AD00ECE0A2 /* NotificationTableViewController.swift in Sources */,
 				D1C813F21DACB18B00775451 /* SignUpViewController.swift in Sources */,
-				D1C8823A1DE432B900E66205 /* EditInfoViewController.swift in Sources */,
 				D14368091DD543830095FCAA /* SkillListingTableViewController.swift in Sources */,
 				D11AAFF31DD3B8AA005E6044 /* JobListingViewController.swift in Sources */,
 				D17DC05A1DC01B0A00F0423C /* MainTabBarController.swift in Sources */,
 				D1C8822F1DE3A7B900E66205 /* JobRequestTableViewCell.swift in Sources */,
 				D1ACD5AF1DB2E83E00D11E22 /* ChatViewController.swift in Sources */,
-				D1C8823B1DE432B900E66205 /* PhotoImageCell.swift in Sources */,
 				D151D4DC1DB863970004B1F8 /* Message.swift in Sources */,
 				D119F6811DB9BC5E0007600F /* Sender.swift in Sources */,
 				A4A6A8A41DE153E200111749 /* PhotoPickerViewController.swift in Sources */,
