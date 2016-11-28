@@ -230,10 +230,10 @@
             </objects>
             <point key="canvasLocation" x="914" y="136"/>
         </scene>
-        <!--View Controller-->
+        <!--Start Up View Controller-->
         <scene sceneID="y50-qm-f6B">
             <objects>
-                <viewController storyboardIdentifier="StartUp" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HA5-cc-qay" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartUp" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HA5-cc-qay" customClass="StartUpViewController" customModule="AssistMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4hm-np-K2i"/>
                         <viewControllerLayoutGuide type="bottom" id="XcZ-4g-3Gz"/>

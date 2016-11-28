@@ -15,8 +15,13 @@ class JobListingViewController: UIViewController {
     @IBOutlet weak var teamworkRatingLabel: UILabel!
     @IBOutlet weak var skillRatingLabel: UILabel!
     @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var closeJobButton: UIButton!
     
     let fbMgr = FirebaseManager.manager
+    var jobRequest: JobRequest?
+    var job: Job!
+    var parentVC: String!
     
     var uid: String!
     var jobTitle: String!
@@ -30,12 +35,26 @@ class JobListingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        extractJobProperties()
         setupUI()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func extractJobProperties() {
+        if jobRequest != nil {
+            job = jobRequest!.job
+        }
+        uid = job.uid
+        jobTitle = job.title
+        displayName = job.displayName
+        jobDescription = job.description
+        date = job.date
+        teamworkRating = job.rating.teamwork
+        skillRating = job.rating.skill
     }
     
     func setupUI() {
@@ -51,6 +70,26 @@ class JobListingViewController: UIViewController {
         if uid == fbMgr.currentUser!.uid {
             messageButton.isHidden = true
         }
+        
+        if parentVC == "jobListing" {
+            acceptButton.isHidden = true
+            closeJobButton.isHidden = true
+        }
+        else if parentVC == "myJobs" {
+            messageButton.isHidden = true
+            acceptButton.isHidden = true
+            if !isJobOwner() {
+                closeJobButton.isHidden = true
+            }
+        }
+        else {
+            messageButton.isHidden = true
+            closeJobButton.isHidden = true
+        }
+    }
+    
+    func isJobOwner() -> Bool {
+        return fbMgr.currentUser!.uid == job.uid
     }
 
     @IBAction func messageButtonTapped(_ sender: AnyObject) {
@@ -59,5 +98,27 @@ class JobListingViewController: UIViewController {
         chatVC.receiverDisplayName = displayName
         
         self.navigationController?.pushViewController(chatVC, animated: true)
+    }
+    
+    @IBAction func acceptButtonTapped(_ sender: AnyObject) {
+        acceptButton.isEnabled = false
+        acceptButton.setTitle("Accepted", for: .disabled)
+        acceptButton.setTitleColor(UIColor.lightGray, for: .disabled)
+        
+        let date = Date().toStringFromDefaultDate()
+        jobRequest!.acceptDate = date
+        jobRequest!.active = "true"
+        
+        fbMgr.acceptJobRequest(jobRequest: jobRequest!)
+    }
+    
+    @IBAction func closeJobTapped(_ sender: AnyObject) {
+        closeJobButton.isEnabled = false
+        closeJobButton.setTitle("Job Closed", for: .disabled)
+        closeJobButton.setTitleColor(UIColor.lightGray, for: .disabled)
+        
+        jobRequest!.active = "false"
+        
+        fbMgr.closeMyJob(jobRequest: jobRequest!)
     }
 }

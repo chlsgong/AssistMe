@@ -13,6 +13,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var initial = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -20,14 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseManager.manager.addStateListener { user in
             if user != nil {
-                let mainTabBarController = Utility.storyboard(forId: Identifier.main).instantiateViewController(withIdentifier: Identifier.mainTabs) as! MainTabBarController
-                
-                self.window?.rootViewController = mainTabBarController
+                if self.initial {
+                    let mainTabBarController = Utility.storyboard(forId: Identifier.main).instantiateViewController(withIdentifier: Identifier.mainTabs) as! MainTabBarController
+                    self.window?.rootViewController = mainTabBarController
+                    self.initial = false
+                }
             }
             else {
                 let startUp = Utility.storyboard(forId: Identifier.main).instantiateViewController(withIdentifier: Identifier.startUp)
                 
-                self.window?.rootViewController = startUp
+                if self.initial {
+                    self.window?.rootViewController = startUp
+                    self.initial = false
+                }
             }
         }
  

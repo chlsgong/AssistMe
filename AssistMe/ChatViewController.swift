@@ -24,11 +24,13 @@ class ChatViewController: JSQMessagesViewController {
 
         // Do any additional setup after loading the view.
         self.senderId = fbMgr.currentUser!.uid
-        self.senderDisplayName = fbMgr.currentUser!.displayName ?? "Charles"
+        self.senderDisplayName = fbMgr.currentUser!.displayName
         
         setupUI()
         
         retrieveMessages()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Request", style: .plain, target: self, action: #selector(requestTapped(_:)))
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,6 +128,17 @@ class ChatViewController: JSQMessagesViewController {
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         sendMessage(text: text, date: date)
+    }
+    
+    // MARK: - Action Handlers
+    
+    @IBAction func requestTapped(_ sender: AnyObject?) {
+        let myJobListingsNav = Utility.storyboard(forId: Identifier.currentJobs).instantiateViewController(withIdentifier: Identifier.myJobListingsNav) as! UINavigationController
+        let myJobListingsTableVC = myJobListingsNav.topViewController as! MyJobListingsTableViewController
+        myJobListingsTableVC.receiverUID = receiverId
+        myJobListingsTableVC.receiverDisplayName = receiverDisplayName
+        
+        self.present(myJobListingsNav, animated: true, completion: nil)
     }
 
 }

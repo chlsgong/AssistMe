@@ -36,6 +36,12 @@ class ProfileViewController: UIViewController {
         reloadData()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+
     private func reloadInfo() {
         // Not sure if this works; Supposed to make the settings button look like a little gear thing
         self.settingsButton.title = NSString(string: "\u{2699}") as String
@@ -108,6 +114,12 @@ class ProfileViewController: UIViewController {
     @IBAction func listingTypeSegDidChange(_ sender: AnyObject) {
         reloadData()
     }
+    
+    @IBAction func jobsButtonTapped(_ sender: AnyObject) {
+        let jobsSegmentedViewController = Utility.storyboard(forId: Identifier.currentJobs).instantiateViewController(withIdentifier: Identifier.jobsNav) as! UINavigationController
+        
+        self.present(jobsSegmentedViewController, animated: true, completion: nil)
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -137,5 +149,17 @@ extension ProfileViewController: UITableViewDataSource {
 
 
 extension ProfileViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if segmentedTableViewController.selectedSegmentIndex == 0 {
+            let jobListingVC = Utility.storyboard(forId: Identifier.jobListing).instantiateViewController(withIdentifier: Identifier.detailJobListing) as! JobListingViewController
+            jobListingVC.job = jobs[indexPath.row]
+            
+            self.navigationController?.pushViewController(jobListingVC, animated: true)
+        } else {
+            let skillListingVC = Utility.storyboard(forId: Identifier.skillListing).instantiateViewController(withIdentifier: Identifier.detailSkillListing) as! SkillListingViewController
+            skillListingVC.listing = skills[indexPath.row]
+            
+            self.navigationController?.pushViewController(skillListingVC, animated: true)
+        }
+    }
 }

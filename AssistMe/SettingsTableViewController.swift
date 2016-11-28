@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class SettingsTableViewController: UITableViewController {
     
@@ -59,24 +60,25 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func deleteAccountButton(sender: AnyObject) {
-//        self.user?.delete { error in
-//            if let _ = error {
-//                self.alertController = UIAlertController(title: "Unable to delete account", message: "", preferredStyle: UIAlertControllerStyle.alert)
-//                
-//                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-//                self.alertController!.addAction(OKAction)
-//                
-//                self.present(self.alertController!, animated: true, completion:nil)
-//            } else {
-//                self.alertController = UIAlertController(title: "Account deleted", message: "", preferredStyle: UIAlertControllerStyle.alert)
-//                
-//                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-//                self.alertController!.addAction(OKAction)
-//                
-//                self.present(self.alertController!, animated: true, completion:nil)
-//            }
-//        }
+        //        self.user?.delete { error in
+        //            if let _ = error {
+        //                self.alertController = UIAlertController(title: "Unable to delete account", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        //
+        //                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+        //                self.alertController!.addAction(OKAction)
+        //
+        //                self.present(self.alertController!, animated: true, completion:nil)
+        //            } else {
+        //                self.alertController = UIAlertController(title: "Account deleted", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        //
+        //                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+        //                self.alertController!.addAction(OKAction)
+        //
+        //                self.present(self.alertController!, animated: true, completion:nil)
+        //            }
+        //        }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PhotoPickerSegue", let photoController = segue.destination as? PhotoPickerViewController {
@@ -128,3 +130,4 @@ extension SettingsTableViewController: PhotoPickerViewControllerDelegate {
         uploadProfilePicture(data: data)
     }
 }
+

@@ -1,44 +1,41 @@
 //
-//  SegmentedViewController.swift
+//  JobsSegmentedViewController.swift
 //  AssistMe
 //
-//  Created by Charles Gong on 10/15/16.
+//  Created by Charles Gong on 11/17/16.
 //  Copyright © 2016 Group10. All rights reserved.
 //
 
 import UIKit
 
-class SegmentedViewController: UIViewController {
+class JobsSegmentedViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var segmentedView: UIView!
     
-    let fbMgr = FirebaseManager.manager
-    let communicationStoryboard = Utility.storyboard(forId: Identifier.communication)
+    let currentJobsStoryboard = Utility.storyboard(forId: Identifier.currentJobs)
     
-    lazy var messageTableViewController: MessageTableViewController = {
-        let controller = self.communicationStoryboard.instantiateViewController(withIdentifier: Identifier.message) as! MessageTableViewController
+    lazy var myJobsTableViewController: MyJobsTableViewController = {
+        let controller = self.currentJobsStoryboard.instantiateViewController(withIdentifier: Identifier.myJobs) as! MyJobsTableViewController
         self.addViewControllerAsChild(viewController: controller)
         
         return controller
     }()
     
-    lazy var notificationTableViewController: NotificationTableViewController = {
-        let controller = self.communicationStoryboard.instantiateViewController(withIdentifier: Identifier.notification) as! NotificationTableViewController
+    lazy var jobRequestsTableViewController: JobRequestsTableViewController = {
+        let controller = self.currentJobsStoryboard.instantiateViewController(withIdentifier: Identifier.jobRequests) as! JobRequestsTableViewController
         self.addViewControllerAsChild(viewController: controller)
         
         return controller
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-        
-        self.navigationItem.changeBackButtonTitle(title: "")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewDidLayoutSubviews() {
         updateView(index: 0)
-        segmentedView.addBottomBorder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,13 +52,13 @@ class SegmentedViewController: UIViewController {
         
         viewController.didMove(toParentViewController: self)
     }
-
+    
     func updateView(index: Int) {
-        messageTableViewController.view.isHidden = !(index == 0)
-        notificationTableViewController.view.isHidden = (index == 0)
+        myJobsTableViewController.view.isHidden = !(index == 0)
+        jobRequestsTableViewController.view.isHidden = (index == 0)
     }
     
-    @IBAction func segmentedControlChanged(_ sender: AnyObject) {
+    @IBAction func segmentDidChange(_ sender: AnyObject) {
         let segmentedControl = sender as! UISegmentedControl
         let selectedIndex = segmentedControl.selectedSegmentIndex
         
@@ -69,9 +66,7 @@ class SegmentedViewController: UIViewController {
         self.navigationItem.title = segmentedControl.titleForSegment(at: selectedIndex)
     }
     
-    @IBAction func logOutButtonTapped(_ sender: AnyObject) {
-        self.performSegue(withIdentifier: "ToStartUp", sender: nil)
-        fbMgr.signOut()
+    @IBAction func exitButtonTapped(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
-    
 }
