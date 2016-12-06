@@ -12,6 +12,7 @@ import UIKit
 
 class EditInfoViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var skillsTableView: UITableView!
     
     let user = FIRAuth.auth()?.currentUser
@@ -64,7 +65,7 @@ class EditInfoViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func saveButton() {
+    @IBAction func userNameSaveButton() {
         if usernameTextField.text!.isEmpty {
         } else {
             let changeRequest = user?.profileChangeRequest()
@@ -78,6 +79,19 @@ class EditInfoViewController: UIViewController {
                     self.showSuccessAlert(withMessage: "Your username has been changed.")
                 }
             }
+        }
+    }
+    
+    @IBAction func emailSaveButton() {
+        if emailTextField.text!.isEmpty {
+        } else {
+            FIRAuth.auth()?.currentUser?.updateEmail(emailTextField.text!) { (error) in
+                if let _ = error {
+                    self.showErrorAlert(withMessage: "Change Failed")
+                } else {
+                    self.showSuccessAlert(withMessage: "Your email has been changed")
+                }
+        }
         }
     }
     

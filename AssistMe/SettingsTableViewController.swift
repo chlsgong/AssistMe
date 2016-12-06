@@ -24,6 +24,8 @@ class SettingsTableViewController: UITableViewController {
     
     var ref = FIRDatabase.database().reference()
     
+    let fbMgr = FirebaseManager.manager
+    
     @IBAction func changePasswordButton(sender: AnyObject) {
         let email = user?.email
         
@@ -36,49 +38,9 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func connectVenmoButton(sender: AnyObject) {
-        // Not included for this build
-    }
-    
-    @IBAction func changeEmailButton(sender: AnyObject) {
-        let alert = UIAlertController.textAlertController(withTitle: "Change email", message: "Please enter a new email", placeholderText: "Email") { text in
-            self.user?.updateEmail("\(text)") { error in
-                if let _ = error {
-                    self.showErrorAlert(withMessage: "Change Failed")
-                } else {
-                    self.showSuccessAlert(withMessage: "Your email has been changed")
-                }
-            }
-        }
-        
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
     @IBAction func logOutButton(sender: AnyObject) {
-        FirebaseManager.manager.signOut()
+        fbMgr.signOut()
     }
-    
-    @IBAction func deleteAccountButton(sender: AnyObject) {
-        //        self.user?.delete { error in
-        //            if let _ = error {
-        //                self.alertController = UIAlertController(title: "Unable to delete account", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        //
-        //                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-        //                self.alertController!.addAction(OKAction)
-        //
-        //                self.present(self.alertController!, animated: true, completion:nil)
-        //            } else {
-        //                self.alertController = UIAlertController(title: "Account deleted", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        //
-        //                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-        //                self.alertController!.addAction(OKAction)
-        //
-        //                self.present(self.alertController!, animated: true, completion:nil)
-        //            }
-        //        }
-    }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PhotoPickerSegue", let photoController = segue.destination as? PhotoPickerViewController {
